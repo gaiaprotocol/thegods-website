@@ -2,10 +2,12 @@ import {
   createPage,
   el,
 } from "https://raw.githubusercontent.com/yjgaia/deno-module/main/page.ts";
-import { introView } from "./pages/introView.ts";
+import { introView } from "../pages/introView.ts";
+import { myNFTsView } from "../pages/myNFTsView.ts";
 import { layout } from "./pages/layout.ts";
-import { myNFTsView } from "./pages/myNFTsView.ts";
-import test from "../pages/test.ts";
+import { el as UniversalEl } from "npm:@common-module/universal-page";
+
+UniversalEl.impl = el;
 
 export function pages(path: string, isDevMode = false): string | undefined {
   if (path === "/") {
@@ -27,16 +29,6 @@ export function pages(path: string, isDevMode = false): string | undefined {
         gtagId: "G-5V6VEQVW28",
       },
       layout(myNFTsView()),
-    );
-  } else if (path === "/test") {
-    return createPage(
-      {
-        title: (isDevMode ? "(Dev) " : "") + "Test | The Gods NFT",
-        jsFiles: [isDevMode ? "bundle-dev.js" : "/bundle.js"],
-        cssFiles: [isDevMode ? "bundle-dev.css" : "/bundle.css"],
-        gtagId: "G-5V6VEQVW28",
-      },
-      layout(test(el)),
     );
   }
 }

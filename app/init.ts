@@ -1,10 +1,10 @@
-import { DomNode, SPAInitializer } from "@common-module/app";
+import { Router, SPAInitializer } from "@common-module/app";
 import { AppCompConfig } from "@common-module/app-components";
 import { MaterialLoadingSpinner } from "@common-module/material-loading-spinner";
-import { LoggedInUserAvatarButton } from "@common-module/social-components";
 import { UniversalWalletConnector } from "@common-module/wallet";
-import { WalletLoginManager } from "@common-module/wallet-login";
 import AppConfig, { IAppConfig } from "./AppConfig.js";
+import IntroView from "./views/IntroView.js";
+import MyNFTsView from "./views/MyNFTsView.js";
 
 export default async function init(config: IAppConfig) {
   AppConfig.init(config);
@@ -27,8 +27,7 @@ export default async function init(config: IAppConfig) {
     },
   });
 
-  new DomNode(document.querySelector(".layout header .buttons") as HTMLElement)
-    .append(
-      new LoggedInUserAvatarButton(WalletLoginManager, true),
-    );
+  Router
+    .add("/", IntroView)
+    .add("/my-nfts", MyNFTsView);
 }
