@@ -5,11 +5,15 @@ import {
 } from "https://raw.githubusercontent.com/yjgaia/deno-module/main/page.ts";
 import { introView } from "../pages/introView.ts";
 import { myNFTsView } from "../pages/myNFTsView.ts";
+import { nftViewer } from "../pages/nftViewer.ts";
 import { layout } from "./pages/layout.ts";
 
 UniversalEl.impl = el;
 
-export function pages(path: string, isDevMode = false): string | undefined {
+export function pages(
+  path: string,
+  isDevMode = false,
+): string | undefined {
   if (path === "/") {
     return createPage(
       {
@@ -29,6 +33,16 @@ export function pages(path: string, isDevMode = false): string | undefined {
         gtagId: "G-5V6VEQVW28",
       },
       layout(myNFTsView()),
+    );
+  } else if (path === "/nft-viewer") {
+    return createPage(
+      {
+        title: (isDevMode ? "(Dev) " : "") + "NFT Viewer | The Gods NFT",
+        jsFiles: [isDevMode ? "bundle-dev.js" : "/bundle.js"],
+        cssFiles: [isDevMode ? "bundle-dev.css" : "/bundle.css"],
+        gtagId: "G-5V6VEQVW28",
+      },
+      nftViewer(),
     );
   }
 }
