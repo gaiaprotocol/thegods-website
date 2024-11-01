@@ -1,5 +1,5 @@
 {
   "imports": {
-    "@common-module/universal-page": "npm:@common-module/universal-page@^0.1.4"
+    "@common-module/universal-page": "npm:@common-module/universal-page@^0.1.6"
   }
 }

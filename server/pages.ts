@@ -5,7 +5,7 @@ import {
 import { introView } from "../pages/introView.ts";
 import { myNFTsView } from "../pages/myNFTsView.ts";
 import { layout } from "./pages/layout.ts";
-import { el as UniversalEl } from "npm:@common-module/universal-page";
+import { el as UniversalEl } from "@common-module/universal-page";
 
 UniversalEl.impl = el;
 

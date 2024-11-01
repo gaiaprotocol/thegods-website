@@ -1,4 +1,4 @@
-import { DomNode } from "@common-module/app";
+import { DomNode, Router } from "@common-module/app";
 import { LoggedInUserAvatarButton } from "@common-module/social-components";
 import { WalletLoginManager } from "@common-module/wallet-login";
 
@@ -8,15 +8,26 @@ class Layout {
   );
 
   public set content(content: DomNode) {
-    this.contentContainer.empty().append(content);
+    this.contentContainer.empty();
+    this.contentContainer.htmlElement.innerHTML = "";
+    this.contentContainer.append(content);
   }
 
-  constructor() {
+  public init() {
     new DomNode(
       document.querySelector(".layout header .buttons") as HTMLElement,
     ).append(
       new LoggedInUserAvatarButton(WalletLoginManager, true),
     );
+
+    new DomNode<HTMLAnchorElement>(
+      document.querySelector(
+        ".layout header a.gaia-protocol-logo",
+      ) as HTMLAnchorElement,
+    ).onDom("click", (event) => {
+      event.preventDefault();
+      Router.go("/");
+    });
   }
 }
 

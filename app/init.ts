@@ -4,6 +4,7 @@ import { MaterialLoadingSpinner } from "@common-module/material-loading-spinner"
 import { UniversalWalletConnector } from "@common-module/wallet";
 import AppConfig, { IAppConfig } from "./AppConfig.js";
 import IntroView from "./views/IntroView.js";
+import Layout from "./views/Layout.js";
 import MyNFTsView from "./views/MyNFTsView.js";
 
 export default async function init(config: IAppConfig) {
@@ -30,4 +31,6 @@ export default async function init(config: IAppConfig) {
   Router
     .add("/", IntroView)
     .add("/my-nfts", MyNFTsView);
+
+  Layout.init();
 }

@@ -109,15 +109,21 @@ meter {
 }
 @font-face {
   font-family: Söhne;
-  src: url("./fonts/soehne.woff2") format("woff2");
+  src: url("https://common-resources.gaia.cc/fonts/soehne.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: Söhne;
-  src: url("./fonts/soehne-bold.woff2") format("woff2");
+  src: url("https://common-resources.gaia.cc/fonts/soehne-bold.woff2") format("woff2");
   font-weight: 700;
   font-display: swap;
+}
+@font-face {
+  font-family: 'Trajan Pro';
+  font-style: normal;
+  font-weight: normal;
+  src: url("https://common-resources.gaia.cc/fonts/trajan-pro.woff") format("woff");
 }
 @keyframes rotate-material-loading-spinner {
   0% {
@@ -847,69 +853,24 @@ li.chat-message-list-item > main {
   max-width: 720px;
   margin: 0 auto;
 }
-@font-face {
-  font-family: 'Trajan Pro';
-  font-style: normal;
-  font-weight: normal;
-  src: url('/fonts/trajan-pro.woff') format('woff');
-}
-.home-view > .name-form {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 0 16px;
-  width: 100%;
-  max-width: 632px;
+.layout > footer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-.home-view > .name-form > h2 {
+.layout > footer > .credit {
+  flex-grow: 1;
+  color: #b4b4b4;
+  font-size: 14px;
+}
+.intro-view > header > h1 {
   font-family: 'Trajan Pro';
   font-size: 72px;
 }
 @container (width <= 520px) {
-  .home-view > .name-form > h2 {
+  .intro-view > header > h1 {
     font-size: 48px;
   }
-}
-.home-view > .name-form > .input.name {
-  width: 100%;
-  font-size: 24px;
-}
-@container (width <= 520px) {
-  .home-view > .name-form > .input.name {
-    font-size: 16px;
-  }
-}
-.home-view > .name-form > .input.name > input {
-  height: 90px;
-  padding: 0 64px 0 24px;
-  border-width: 2px;
-  border-radius: 24px;
-}
-@container (width <= 520px) {
-  .home-view > .name-form > .input.name > input {
-    height: 68px;
-  }
-}
-.home-view > .name-form > .input.name > .suffix-icon {
-  right: 26px;
-  bottom: 34px;
-}
-@container (width <= 520px) {
-  .home-view > .name-form > .input.name > .suffix-icon {
-    bottom: 22px;
-  }
-}
-.home-view > .name-form > .input.name > .suffix-icon > .icon > svg {
-  width: 24px;
-  height: 24px;
-}
-.home-view > .name-form > .credit {
-  padding: 16px 0;
-  color: #b4b4b4;
 }
 

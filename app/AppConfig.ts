@@ -1,3 +1,4 @@
+import { Router } from "@common-module/app";
 import {
   DropdownMenuGroup,
   DropdownMenuItem,
@@ -54,7 +55,7 @@ class AppConfig implements IAppConfig {
           icon: new NFTIcon(),
           label: "My NFTs",
           onClick: () => {
-            location.href = "/my-nfts";
+            Router.go("/my-nfts");
             menu.remove();
           },
         }),
