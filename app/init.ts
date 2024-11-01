@@ -13,9 +13,9 @@ export default async function init(config: IAppConfig) {
   SPAInitializer.init();
 
   UniversalWalletConnector.init({
-    name: "Gaia Names",
+    name: "The Gods NFT",
     icon: "https://names.gaia.cc/images/icon-192x192.png",
-    description: "Web3 name service by Gaia Protocol",
+    description: "Gaia Protocol's Membership NFT",
     walletConnectProjectId: "7538ca3cec20504b06a3338d0e53b028",
     chains: {
       "base-sepolia": {
