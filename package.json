@@ -6,7 +6,9 @@
   "type": "module",
   "dependencies": {
     "@common-module/material-loading-spinner": "0.1.6",
-    "gaiaprotocol": "^0.1.6"
+    "gaiaprotocol": "^0.1.6",
+    "@gaiaengine/2d": "^0.1.6",
+    "@gaiaengine/2d-spine": "^0.1.6"
   },
   "devDependencies": {
     "@types/node": "^22.7.5",

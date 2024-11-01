@@ -848,13 +848,6 @@ li.chat-message-list-item > main {
   align-items: center;
   height: 40px;
 }
-@container (width <= 520px) {
-  .layout > header > .buttons > .logged-in-user-avatar-button {
-    position: fixed;
-    top: -999999px;
-    right: -999999px;
-  }
-}
 .layout > main {
   max-width: 720px;
   margin: 0 auto;
