@@ -6,12 +6,7 @@ Deno.serve(async (req) => {
   const basePath = Deno.cwd() + "/public";
   const path = new URL(req.url).pathname;
   const page = pages(path, true);
-  if (page) {
-    return new Response(page, {
-      status: 200,
-      headers: { "Content-Type": "text/html" },
-    });
-  }
+  if (page) return page;
 
   const filePath = basePath + path;
   if (path !== "/" && await exists(filePath)) {
