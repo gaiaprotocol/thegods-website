@@ -119,12 +119,14 @@ meter {
   font-weight: 700;
   font-display: swap;
 }
+/*
 @font-face {
   font-family: 'Trajan Pro';
-  font-style: normal;
+  font-style : normal;
   font-weight: normal;
-  src: url("https://common-resources.gaia.cc/fonts/trajan-pro.woff") format("woff");
+  src        : url("https://common-resources.gaia.cc/fonts/trajan-pro.woff") format("woff");
 }
+*/
 @keyframes rotate-material-loading-spinner {
   0% {
     transform: rotate(0deg);
@@ -235,6 +237,9 @@ body {
   -webkit-font-smoothing: antialiased;
   container-type: inline-size;
 }
+h1 {
+  line-height: 1.1;
+}
 p {
   line-height: 1.5;
   word-break: break-word;
@@ -263,7 +268,8 @@ dialog {
   color: var(--selection-text-color);
 }
 /* App Components */
-button {
+button,
+a.button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -276,11 +282,13 @@ button {
   border-radius: 9999px;
 }
 @container (width <= 520px) {
-  button {
+  button,
+  a.button {
     padding: 8px 16px;
   }
 }
-button > .icon-container {
+button > .icon-container,
+a.button > .icon-container {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -288,82 +296,101 @@ button > .icon-container {
   width: 36px;
   height: 36px;
 }
-button > .icon-container > .icon {
+button > .icon-container > .icon,
+a.button > .icon-container > .icon {
   width: 36px;
   height: 36px;
   border-radius: 50%;
 }
-button > .icon-container > .icon > svg {
+button > .icon-container > .icon > svg,
+a.button > .icon-container > .icon > svg {
   width: 36px;
   height: 36px;
   border-radius: 50%;
 }
-button.disabled {
+button.disabled,
+a.button.disabled {
   cursor: not-allowed;
 }
-button.text {
+button.text,
+a.button.text {
   background-color: transparent;
   color: var(--text-button-text-color);
 }
 @media (pointer: fine) {
-  button.text:hover:not(.disabled) {
+  button.text:hover:not(.disabled),
+  a.button.text:hover:not(.disabled) {
     background-color: var(--text-button-hover-bg-color);
   }
 }
-button.text:active:not(.disabled) {
+button.text:active:not(.disabled),
+a.button.text:active:not(.disabled) {
   background-color: var(--text-button-hover-bg-color);
 }
-button.text.disabled {
+button.text.disabled,
+a.button.text.disabled {
   color: var(--text-button-disabled-text-color);
 }
-button.contained {
+button.contained,
+a.button.contained {
   background-color: var(--contained-button-bg-color);
   color: var(--contained-button-text-color);
 }
 @media (pointer: fine) {
-  button.contained:hover {
+  button.contained:hover,
+  a.button.contained:hover {
     background-color: var(--contained-button-hover-bg-color);
   }
 }
-button.contained:active {
+button.contained:active,
+a.button.contained:active {
   background-color: var(--contained-button-hover-bg-color);
 }
-button.contained.disabled {
+button.contained.disabled,
+a.button.contained.disabled {
   background-color: var(--contained-button-disabled-bg-color);
 }
-button.outlined {
+button.outlined,
+a.button.outlined {
   border: 1px solid var(--outlined-button-border-color);
   background-color: var(--outlined-button-bg-color);
   color: var(--outlined-button-text-color);
 }
 @media (pointer: fine) {
-  button.outlined:hover:not(.disabled) {
+  button.outlined:hover:not(.disabled),
+  a.button.outlined:hover:not(.disabled) {
     border-color: var(--outlined-button-hover-border-color);
     background-color: var(--outlined-button-hover-bg-color);
   }
 }
-button.outlined:active:not(.disabled) {
+button.outlined:active:not(.disabled),
+a.button.outlined:active:not(.disabled) {
   border-color: var(--outlined-button-hover-border-color);
   background-color: var(--outlined-button-hover-bg-color);
 }
-button.outlined.disabled {
+button.outlined.disabled,
+a.button.outlined.disabled {
   background-color: var(--outlined-button-disabled-bg-color);
 }
-button.circle {
+button.circle,
+a.button.circle {
   padding: 8px;
   border-radius: 50%;
   background-color: var(--circle-button-bg-color);
   color: var(--circle-button-text-color);
 }
 @media (pointer: fine) {
-  button.circle:hover {
+  button.circle:hover,
+  a.button.circle:hover {
     background-color: var(--circle-button-hover-bg-color);
   }
 }
-button.circle:active {
+button.circle:active,
+a.button.circle:active {
   background-color: var(--circle-button-hover-bg-color);
 }
-button.circle.disabled {
+button.circle.disabled,
+a.button.circle.disabled {
   background-color: var(--circle-button-disabled-bg-color);
 }
 .button-group {
@@ -843,7 +870,8 @@ li.chat-message-list-item > main {
   height: 40px;
 }
 .layout > main {
-  max-width: 720px;
+  max-width: 1128px;
+  padding: 0 20px;
   margin: 0 auto;
 }
 .layout > footer {
@@ -857,13 +885,29 @@ li.chat-message-list-item > main {
   color: #b4b4b4;
   font-size: 14px;
 }
+.intro-view > header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.intro-view > header > p.caption {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
 .intro-view > header > h1 {
-  font-family: 'Trajan Pro';
   font-size: 72px;
 }
 @container (width <= 520px) {
   .intro-view > header > h1 {
     font-size: 48px;
   }
+}
+.intro-view > header > p.description {
+  margin-top: 22px;
+}
+.intro-view > header > .buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 34px;
 }
 

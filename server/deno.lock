@@ -1,15 +1,14 @@
 {
   "version": "4",
   "specifiers": {
-    "npm:@common-module/universal-page@*": "0.1.6",
-    "npm:@common-module/universal-page@~0.1.6": "0.1.6"
+    "npm:@common-module/universal-page@~0.1.7": "0.1.7"
   },
   "npm": {
     "@common-module/ts@0.1.6": {
       "integrity": "sha512-T4b3WbCo8HwE7AqELHUyYQQZpUNQ7dJQm3LdnFrpp3HCvzoxYd3byl3gJKFYocbNKnQihZA1Jf5GJtP/Fy79WA=="
     },
-    "@common-module/universal-page@0.1.6": {
-      "integrity": "sha512-4Ew3diP15M6p86uVRxl/Qh8JzwSm5bmYN4L/6yKGxS3sZUOjs2RhLwIKzZLbYC3JSdw9hZOeOFxW8OgZZ4hcFw==",
+    "@common-module/universal-page@0.1.7": {
+      "integrity": "sha512-+AUxHjqrB7VkkL3Dj1RfTTjc7Oe1xkjCNhP5LFfiln84HxdaV4aFKZYFDM+ENjVKQDTmHUm2ZItjv5dznD7KPg==",
       "dependencies": [
         "@common-module/ts"
       ]
@@ -110,7 +109,7 @@
   },
   "workspace": {
     "dependencies": [
-      "npm:@common-module/universal-page@~0.1.6"
+      "npm:@common-module/universal-page@~0.1.7"
     ]
   }
 }

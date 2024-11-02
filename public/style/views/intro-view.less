@@ -1,12 +1,30 @@
 .intro-view {
   >header {
+    display       : flex;
+    flex-direction: column;
+    text-align    : center;
+
+    >p.caption {
+      font-size    : 16px;
+      margin-bottom: 12px;
+    }
+
     >h1 {
-      font-family: 'Trajan Pro';
-      font-size  : 72px;
+      font-size: 72px;
 
       @container (width <=@phone-width) {
         font-size: 48px;
       }
+    }
+
+    >p.description {
+      margin-top: 22px;
+    }
+
+    >.buttons {
+      display        : flex;
+      justify-content: center;
+      margin-top     : 34px;
     }
   }
 }

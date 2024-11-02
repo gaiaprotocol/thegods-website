@@ -1,4 +1,4 @@
-import { el as UniversalEl } from "@common-module/universal-page";
+import { el as UniversalEl, html } from "@common-module/universal-page";
 import {
   createPage,
   el,
@@ -9,6 +9,7 @@ import { nftViewer } from "../pages/nftViewer.ts";
 import { layout } from "./pages/layout.ts";
 
 UniversalEl.impl = el;
+html.impl = (htmlContent) => htmlContent;
 
 export function pages(
   path: string,
