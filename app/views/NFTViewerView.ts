@@ -7,6 +7,7 @@ export default class NFTViewerView extends View {
     this.container = new QueriedDomNode(".nft-viewer-view").append(
       new NFTViewer(
         parseInt(new URLSearchParams(location.search).get("tokenId") ?? ""),
+        true,
       ),
     );
   }

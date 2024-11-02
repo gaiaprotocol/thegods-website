@@ -308,6 +308,27 @@ a.button > .icon-container > .icon > svg {
   height: 36px;
   border-radius: 50%;
 }
+button > .right-icon-container,
+a.button > .right-icon-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+button > .right-icon-container > .icon,
+a.button > .right-icon-container > .icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+button > .right-icon-container > .icon > svg,
+a.button > .right-icon-container > .icon > svg {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
 button.disabled,
 a.button.disabled {
   cursor: not-allowed;
@@ -843,6 +864,20 @@ li.chat-message-list-item > main {
   display: flex;
   align-items: center;
 }
+.nft-viewer {
+  position: relative;
+}
+.nft-viewer > .loading-spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #171717;
+}
 .layout {
   padding-top: 72px;
 }
@@ -911,7 +946,29 @@ li.chat-message-list-item > main {
   margin-top: 34px;
 }
 .intro-view > .nft-preview {
-  margin-top: 80px;
+  max-width: 725px;
+  margin: 80px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 54px;
+}
+.intro-view > .nft-preview > .nft-viewer {
+  width: 100%;
+}
+.intro-view > .nft-preview > .nft-viewer > .game-screen > canvas,
+.intro-view > .nft-preview > .nft-viewer > .loading-spinner {
+  border-radius: 8px;
+}
+.intro-view > .nft-preview > .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+@container (width <= 520px) {
+  .intro-view > .nft-preview > .buttons {
+    flex-direction: column;
+  }
 }
 .intro-view > main {
   margin-top: 108px;

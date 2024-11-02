@@ -1,29 +1,67 @@
 import { DomNode } from "@common-module/app";
-import { GameScreen } from "@gaiaengine/2d";
+import { AppCompConfig } from "@common-module/app-components";
+import { GameScreen, LetterboxedScreen } from "@gaiaengine/2d";
 import { Spine } from "@gaiaengine/2d-spine";
 import AppConfig from "../AppConfig.js";
 import TheGodMetadata from "../entities/TheGodMetadata.js";
 
 export default class NFTViewer extends DomNode {
-  private screen: GameScreen;
+  private screen: GameScreen | LetterboxedScreen;
+  private _tokenId!: number;
 
-  constructor(private tokenId: number) {
+  constructor(tokenId: number, fullscreen = false) {
     super(".nft-viewer");
 
-    this.screen = new GameScreen(1024, 1024).appendTo(this);
-    this.loadMetadata();
+    if (fullscreen) {
+      this.screen = new LetterboxedScreen(1024, 1024);
+      this.style({
+        position: "fixed",
+        left: "0",
+        top: "0",
+        width: "100%",
+        height: "100%",
+      });
+    } else {
+      this.screen = new GameScreen(1024, 1024).appendTo(this);
+      this.on("visible", () => this.updateLayout());
+      this.onWindow("resize", () => this.updateLayout());
+    }
 
-    this.on("visible", () => {
-      const rect = this.calculateRect();
-      console.log(rect);
+    this.tokenId = tokenId;
+  }
+
+  private updateLayout() {
+    const rect = this.calculateRect();
+
+    const widthRatio = rect.width / 1024;
+    const heightRatio = rect.width / 1024;
+    const ratio = Math.min(widthRatio, heightRatio);
+
+    this.screen.resize(1024, 1024, ratio);
+
+    this.style({
+      height: `${rect.width}px`,
     });
   }
 
+  public set tokenId(tokenId: number) {
+    this._tokenId = tokenId;
+    this.loadMetadata();
+  }
+
+  public get tokenId() {
+    return this._tokenId;
+  }
+
   private async loadMetadata() {
+    this.screen.root.empty();
+
+    const loading = new AppCompConfig.LoadingSpinner().appendTo(this);
+
     const data: TheGodMetadata | undefined = await AppConfig.supabaseConnector
       .safeFetchSingle(
         "the_gods_metadatas",
-        (b) => b.select("*").eq("token_id", this.tokenId),
+        (b) => b.select("*").eq("token_id", this._tokenId),
       );
 
     if (data) {
@@ -53,5 +91,7 @@ export default class NFTViewer extends DomNode {
       this.screen.style({ cursor: "pointer" });
       this.screen.onDom("click", () => spineObject.animation = "touched");
     }
+
+    loading.remove();
   }
 }

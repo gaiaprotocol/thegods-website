@@ -5,7 +5,7 @@ import {
 } from "https://raw.githubusercontent.com/yjgaia/deno-module/main/page.ts";
 import { introView } from "../pages/introView.ts";
 import { myNFTsView } from "../pages/myNFTsView.ts";
-import { nftViewer } from "../pages/nftViewer.ts";
+import { nftViewerView } from "../pages/nftViewerView.ts";
 import { layout } from "./pages/layout.ts";
 
 UniversalEl.impl = el;
@@ -43,7 +43,7 @@ export function pages(
         cssFiles: [isDevMode ? "bundle-dev.css" : "/bundle.css"],
         gtagId: "G-5V6VEQVW28",
       },
-      nftViewer(),
+      nftViewerView(),
     );
   }
 }
