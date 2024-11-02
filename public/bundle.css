@@ -857,7 +857,7 @@ li.chat-message-list-item > main {
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: rgba(8, 8, 8, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(24px);
   display: flex;
   align-items: center;
@@ -909,5 +909,11 @@ li.chat-message-list-item > main {
   display: flex;
   justify-content: center;
   margin-top: 34px;
+}
+.intro-view > .nft-preview {
+  margin-top: 80px;
+}
+.intro-view > main {
+  margin-top: 108px;
 }
 

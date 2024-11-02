@@ -6,7 +6,7 @@ import AppConfig, { IAppConfig } from "./AppConfig.js";
 import IntroView from "./views/IntroView.js";
 import Layout from "./views/Layout.js";
 import MyNFTsView from "./views/MyNFTsView.js";
-import NFTViewer from "./views/NFTViewer.js";
+import NFTViewerView from "./views/NFTViewerView.js";
 
 export default async function init(config: IAppConfig) {
   AppConfig.init(config);
@@ -32,7 +32,7 @@ export default async function init(config: IAppConfig) {
   Router
     .add("/", IntroView)
     .add("/my-nfts", MyNFTsView)
-    .add("/nft-viewer", NFTViewer);
+    .add("/nft-viewer", NFTViewerView);
 
   Layout.init();
 }

@@ -20,11 +20,13 @@ export function introView<T>(): T {
             '<svg width="0.625rem" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 9L9 1M9 1H2.5M9 1V7.22222" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
           ),
           {
-            href: "https://opensea.io/collection/the-gods",
+            href: "https://opensea.io/collection/gaia-protocol-gods",
             target: "_blank",
           },
         ),
       ),
     ),
+    el(".nft-preview"),
+    el("main"),
   );
 }
