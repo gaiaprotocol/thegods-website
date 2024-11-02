@@ -5,7 +5,7 @@ export function introView<T>(): T {
     ".intro-view",
     el(
       "header",
-      el("p.caption", "NFT"),
+      el("p.caption", "NFT Collection"),
       el("h1", "The Gods"),
       el(
         "p.description",

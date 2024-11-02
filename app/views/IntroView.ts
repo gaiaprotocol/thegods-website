@@ -6,6 +6,7 @@ import NFTViewer from "../components/NFTViewer.js";
 import RefreshIcon from "../icons/RefreshIcon.js";
 import Layout from "./Layout.js";
 import OpenInNewIcon from "../icons/OpenInNewIcon.js";
+import AppConfig from "../AppConfig.js";
 
 export default class IntroView extends View {
   constructor() {
@@ -36,6 +37,19 @@ export default class IntroView extends View {
             );
           },
         }),
+      ),
+    );
+
+    this.test();
+  }
+
+  private async test() {
+    console.log(
+      await AppConfig.supabaseConnector.callEdgeFunction(
+        "set-the-god-metadata",
+        {
+          tokenId: 2987,
+        },
       ),
     );
   }

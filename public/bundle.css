@@ -920,13 +920,16 @@ li.chat-message-list-item > main {
   color: #b4b4b4;
   font-size: 14px;
 }
+.intro-view {
+  margin-top: 86px;
+}
 .intro-view > header {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 .intro-view > header > p.caption {
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 12px;
 }
 .intro-view > header > h1 {

@@ -38,7 +38,12 @@ class AppConfig implements IAppConfig {
 
     GaiaNameRepository.supabaseConnector = this.supabaseConnector;
 
-    GaiaProtocolConfig.init(config.isDevMode, config.isDevMode);
+    GaiaProtocolConfig.init(
+      config.isDevMode,
+      config.isDevMode,
+      this.supabaseConnector,
+      authTokenManager,
+    );
 
     SocialCompConfig.fetchUser = async (walletAddress: string) => {
       const name = await GaiaNameRepository.fetchName(walletAddress);
