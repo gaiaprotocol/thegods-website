@@ -60,7 +60,7 @@ export default class NFTViewer extends DomNode {
 
     const data: TheGodMetadata | undefined = await AppConfig.supabaseConnector
       .safeFetchSingle(
-        "the_gods_metadatas",
+        "the_god_metadatas",
         (b) => b.select("*").eq("token_id", this._tokenId),
       );
 

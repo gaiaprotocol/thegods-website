@@ -32,7 +32,7 @@ export default async function init(config: IAppConfig) {
   Router
     .add("/", IntroView)
     .add("/my-nfts", MyNFTsView)
-    .add("/nft-viewer", NFTViewerView);
+    .add("/nft-viewer/:tokenId", NFTViewerView);
 
   Layout.init();
 }

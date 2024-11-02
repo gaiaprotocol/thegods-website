@@ -19,8 +19,8 @@ export function pages(
     return createPage(
       {
         title: (isDevMode ? "(Dev) " : "") + "The Gods NFT",
-        jsFiles: [isDevMode ? "bundle-dev.js" : "/bundle.js"],
-        cssFiles: [isDevMode ? "bundle-dev.css" : "/bundle.css"],
+        jsFiles: [isDevMode ? "/bundle-dev.js" : "/bundle.js"],
+        cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
         gtagId: "G-5V6VEQVW28",
       },
       layout(introView()),
@@ -29,18 +29,18 @@ export function pages(
     return createPage(
       {
         title: (isDevMode ? "(Dev) " : "") + "Profile | The Gods NFT",
-        jsFiles: [isDevMode ? "bundle-dev.js" : "/bundle.js"],
-        cssFiles: [isDevMode ? "bundle-dev.css" : "/bundle.css"],
+        jsFiles: [isDevMode ? "/bundle-dev.js" : "/bundle.js"],
+        cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
         gtagId: "G-5V6VEQVW28",
       },
       layout(myNFTsView()),
     );
-  } else if (path === "/nft-viewer") {
+  } else if (path.startsWith("/nft-viewer/")) {
     return createPage(
       {
         title: (isDevMode ? "(Dev) " : "") + "NFT Viewer | The Gods NFT",
-        jsFiles: [isDevMode ? "bundle-dev.js" : "/bundle.js"],
-        cssFiles: [isDevMode ? "bundle-dev.css" : "/bundle.css"],
+        jsFiles: [isDevMode ? "/bundle-dev.js" : "/bundle.js"],
+        cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
         gtagId: "G-5V6VEQVW28",
       },
       nftViewerView(),
