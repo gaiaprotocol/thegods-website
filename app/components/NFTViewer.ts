@@ -1,9 +1,21 @@
 import { DomNode } from "@common-module/app";
-import { AppCompConfig } from "@common-module/app-components";
+import { MaterialLoadingSpinner } from "@common-module/material-loading-spinner";
 import { GameScreen, LetterboxedScreen } from "@gaiaengine/2d";
 import { Spine } from "@gaiaengine/2d-spine";
-import AppConfig from "../AppConfig.js";
-import TheGodMetadata from "../entities/TheGodMetadata.js";
+
+interface Attribute {
+  trait_type: string;
+  value: string;
+}
+
+interface OpenSeaMetadata {
+  name: string;
+  description: string;
+  image: string;
+  external_url: string;
+  animation_url?: string;
+  attributes: Attribute[];
+}
 
 export default class NFTViewer extends DomNode {
   private screen: GameScreen | LetterboxedScreen;
@@ -56,27 +68,33 @@ export default class NFTViewer extends DomNode {
   private async loadMetadata() {
     this.screen.root.empty();
 
-    const loading = new AppCompConfig.LoadingSpinner().appendTo(this);
+    const loading = new MaterialLoadingSpinner().appendTo(this);
 
-    const data: TheGodMetadata | undefined = await AppConfig.supabaseConnector
-      .safeFetchSingle(
-        "the_god_metadatas",
-        (b) => b.select("*").eq("token_id", this._tokenId),
-      );
+    const response = await fetch(
+      `https://dhzxulywizygtdficytt.supabase.co/functions/v1/the-god-metadata/${this.tokenId}`,
+    );
+    const data: OpenSeaMetadata | undefined = await response.json();
 
     if (data) {
-      const gender = data.gender.toLowerCase();
+      const type = data.attributes.find((a) => a.trait_type === "Type")!.value;
+      const gender = data.attributes.find((a) => a.trait_type === "Gender")!
+        .value.toLowerCase();
+
       const skins: string[] = [];
-      for (const [partName, part] of Object.entries(data.parts)) {
-        skins.push(`${partName}/${part}`);
+      for (const attribute of data.attributes) {
+        if (
+          attribute.trait_type !== "Gender" && attribute.trait_type !== "Type"
+        ) {
+          skins.push(`${attribute.trait_type}/${attribute.value}`);
+        }
       }
 
-      const path = `/spine-files/god-${data.type.toLowerCase()}-${gender}`;
+      const path = `/spine-files/god-${type.toLowerCase()}-${gender}`;
 
       const spineObject = new Spine(0, 0, {
         json: `${path}.json`,
         atlas: `${path}.atlas`,
-        png: data.type === "Water"
+        png: type === "Water"
           ? {
             [`water-${gender}.png`]: `${path}.png`,
             [`water-${gender}_2.png`]: `${path}-2.png`,

@@ -53,7 +53,7 @@ export function pages(
       createPage(
         {
           title: (isDevMode ? "(Dev) " : "") + "NFT Viewer | The Gods NFT",
-          jsFiles: [isDevMode ? "/bundle-dev.js" : "/bundle.js"],
+          jsFiles: [isDevMode ? "/nft-viewer-dev.js" : "/nft-viewer.js"],
           cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
           gtagId: "G-5V6VEQVW28",
         },

@@ -5,6 +5,7 @@ import webpack from "webpack";
 const config: webpack.Configuration = {
   entry: {
     "bundle": "./app/dev.ts",
+    "nft-viewer": "./app/nft-viewer-dev.ts",
     __less: "./public/style/main.less",
   },
   module: {
