@@ -17,9 +17,13 @@ interface OpenSeaMetadata {
   attributes: Attribute[];
 }
 
-export default class NFTViewer extends DomNode {
+export default class NFTViewer extends DomNode<HTMLDivElement, {
+  loaded: (data: OpenSeaMetadata) => void;
+}> {
   private screen: GameScreen | LetterboxedScreen;
   private _tokenId!: number;
+
+  public loading = false;
 
   constructor(tokenId: number, fullscreen = false) {
     super(".nft-viewer");
@@ -69,10 +73,12 @@ export default class NFTViewer extends DomNode {
     this.screen.root.empty();
 
     const loading = new MaterialLoadingSpinner().appendTo(this);
+    this.loading = true;
 
     const response = await fetch(
       `https://dhzxulywizygtdficytt.supabase.co/functions/v1/god-metadata/${this.tokenId}`,
     );
+
     const data: OpenSeaMetadata | undefined = await response.json();
 
     if (data) {
@@ -103,13 +109,19 @@ export default class NFTViewer extends DomNode {
           : `${path}.png`,
         skins,
         animation: "animation",
+        onLoad: () => {
+          loading.remove();
+          this.loading = false;
+          this.emit("loaded", data);
+        },
         onAnimationEnd: () => spineObject.animation = "animation",
       }).appendTo(this.screen.root);
 
       this.screen.style({ cursor: "pointer" });
       this.screen.onDom("click", () => spineObject.animation = "touched");
+    } else {
+      loading.remove();
+      this.loading = false;
     }
-
-    loading.remove();
   }
 }
