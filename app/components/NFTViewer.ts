@@ -71,7 +71,7 @@ export default class NFTViewer extends DomNode {
     const loading = new MaterialLoadingSpinner().appendTo(this);
 
     const response = await fetch(
-      `https://dhzxulywizygtdficytt.supabase.co/functions/v1/the-god-metadata/${this.tokenId}`,
+      `https://dhzxulywizygtdficytt.supabase.co/functions/v1/god-metadata/${this.tokenId}`,
     );
     const data: OpenSeaMetadata | undefined = await response.json();
 

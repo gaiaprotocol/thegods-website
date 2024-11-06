@@ -46,7 +46,7 @@ export default class IntroView extends View {
   private async test() {
     console.log(
       await AppConfig.supabaseConnector.callEdgeFunction(
-        "set-the-god-metadata",
+        "set-god-metadata",
         {
           tokenId: 2987,
         },

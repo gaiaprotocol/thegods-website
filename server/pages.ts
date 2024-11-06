@@ -12,6 +12,8 @@ import { corsHeaders } from "https://raw.githubusercontent.com/yjgaia/deno-modul
 UniversalEl.impl = el;
 html.impl = (htmlContent) => htmlContent;
 
+const GTAG_ID = "G-ZT30R32YZV";
+
 export function pages(
   path: string,
   isDevMode = false,
@@ -23,7 +25,7 @@ export function pages(
           title: (isDevMode ? "(Dev) " : "") + "The Gods NFT",
           jsFiles: [isDevMode ? "/bundle-dev.js" : "/bundle.js"],
           cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
-          gtagId: "G-5V6VEQVW28",
+          gtagId: GTAG_ID,
         },
         layout(introView()),
       ),
@@ -39,7 +41,7 @@ export function pages(
           title: (isDevMode ? "(Dev) " : "") + "Profile | The Gods NFT",
           jsFiles: [isDevMode ? "/bundle-dev.js" : "/bundle.js"],
           cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
-          gtagId: "G-5V6VEQVW28",
+          gtagId: GTAG_ID,
         },
         layout(myNFTsView()),
       ),
@@ -55,7 +57,7 @@ export function pages(
           title: (isDevMode ? "(Dev) " : "") + "NFT Viewer | The Gods NFT",
           jsFiles: [isDevMode ? "/nft-viewer-dev.js" : "/nft-viewer.js"],
           cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
-          gtagId: "G-5V6VEQVW28",
+          gtagId: GTAG_ID,
         },
         nftViewerView(),
       ),
