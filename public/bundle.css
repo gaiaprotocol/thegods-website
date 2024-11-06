@@ -965,21 +965,21 @@ li.chat-message-list-item > main {
 .intro-view > .nft-preview > .nft-viewer-container > .nft-viewer > .loading-spinner {
   border-radius: 8px;
 }
-.intro-view > .nft-preview > .nft-viewer-container > .data > h2 {
+.intro-view > .nft-preview > .nft-viewer-container > .data {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   padding: 18px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  user-select: none;
+}
+.intro-view > .nft-preview > .nft-viewer-container > .data > h2 {
   font-size: 13.5px;
   flex-grow: 1;
-}
-.intro-view > .nft-preview > .nft-viewer-container > .data > p {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 18px;
 }
 .intro-view > .nft-preview > .buttons {
   display: flex;
@@ -994,5 +994,9 @@ li.chat-message-list-item > main {
 }
 .intro-view > main {
   margin-top: 108px;
+}
+.nft-viewer-view > .nft-viewer > .loading-spinner {
+  position: fixed;
+  z-index: 999997;
 }
 

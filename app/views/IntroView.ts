@@ -18,6 +18,7 @@ export default class IntroView extends View {
       el(
         ".nft-viewer-container",
         nftViewer = new NFTViewer(IntegerUtils.random(0, 3332)),
+        { onclick: () => nftViewer.touch() },
       ),
       el(
         ".buttons",

@@ -22,6 +22,7 @@ export default class NFTViewer extends DomNode<HTMLDivElement, {
 }> {
   private screen: GameScreen | LetterboxedScreen;
   private _tokenId!: number;
+  private spineObject: Spine | undefined;
 
   public loading = false;
 
@@ -30,13 +31,6 @@ export default class NFTViewer extends DomNode<HTMLDivElement, {
 
     if (fullscreen) {
       this.screen = new LetterboxedScreen(1024, 1024);
-      this.style({
-        position: "fixed",
-        left: "0",
-        top: "0",
-        width: "100%",
-        height: "100%",
-      });
     } else {
       this.screen = new GameScreen(1024, 1024).appendTo(this);
       this.on("visible", () => this.updateLayout());
@@ -97,7 +91,7 @@ export default class NFTViewer extends DomNode<HTMLDivElement, {
 
       const path = `/spine-files/god-${type.toLowerCase()}-${gender}`;
 
-      const spineObject = new Spine(0, 0, {
+      this.spineObject = new Spine(0, 0, {
         json: `${path}.json`,
         atlas: `${path}.atlas`,
         png: type === "Water"
@@ -114,14 +108,24 @@ export default class NFTViewer extends DomNode<HTMLDivElement, {
           this.loading = false;
           this.emit("loaded", data);
         },
-        onAnimationEnd: () => spineObject.animation = "animation",
+        onAnimationEnd: () => {
+          if (this.spineObject) {
+            this.spineObject.animation = "animation";
+          }
+        },
       }).appendTo(this.screen.root);
 
       this.screen.style({ cursor: "pointer" });
-      this.screen.onDom("click", () => spineObject.animation = "touched");
+      this.screen.onDom("click", () => this.touch());
     } else {
       loading.remove();
       this.loading = false;
+    }
+  }
+
+  public touch() {
+    if (this.spineObject) {
+      this.spineObject.animation = "touched";
     }
   }
 }
