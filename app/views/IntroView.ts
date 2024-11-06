@@ -55,8 +55,9 @@ export default class IntroView extends View {
           el("h2", `#${nftViewer.tokenId}`),
           el(
             "p",
-            data.attributes.map((attr) => `${attr.trait_type}: ${attr.value}`)
-              .join(", "),
+            data.attributes.filter((attr) =>
+              attr.trait_type !== "Background" && attr.value !== "None"
+            ).map((attr) => attr.value).join(", "),
           ),
         ),
       );

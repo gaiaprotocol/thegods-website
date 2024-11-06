@@ -49,21 +49,23 @@
         }
       }
 
-      >.data {
+      >.data>h2 {
         position: absolute;
         top     : 0;
         left    : 0;
         width   : 100%;
-        height  : 100%;
         padding : 18px;
 
-        display       : flex;
-        flex-direction: column;
+        font-size: 13.5px;
+        flex-grow: 1;
+      }
 
-        >h2 {
-          font-size: 13.5px;
-          flex-grow: 1;
-        }
+      >.data>p {
+        position: absolute;
+        bottom  : 0;
+        left    : 0;
+        width   : 100%;
+        padding : 18px;
       }
     }
 

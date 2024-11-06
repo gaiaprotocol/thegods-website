@@ -971,19 +971,21 @@ li.chat-message-list-item > main {
 .intro-view > .nft-preview > .nft-viewer-container > .nft-viewer > .loading-spinner {
   border-radius: 8px;
 }
-.intro-view > .nft-preview > .nft-viewer-container > .data {
+.intro-view > .nft-preview > .nft-viewer-container > .data > h2 {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   padding: 18px;
-  display: flex;
-  flex-direction: column;
-}
-.intro-view > .nft-preview > .nft-viewer-container > .data > h2 {
   font-size: 13.5px;
   flex-grow: 1;
+}
+.intro-view > .nft-preview > .nft-viewer-container > .data > p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 18px;
 }
 .intro-view > .nft-preview > .buttons {
   display: flex;
