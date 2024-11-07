@@ -3,9 +3,10 @@ import { AppCompConfig } from "@common-module/app-components";
 import { MaterialLoadingSpinner } from "@common-module/material-loading-spinner";
 import { UniversalWalletConnector } from "@common-module/wallet";
 import AppConfig, { IAppConfig } from "./AppConfig.js";
+import GodDetailView from "./views/GodDetailView.js";
 import IntroView from "./views/IntroView.js";
 import Layout from "./views/Layout.js";
-import MyNFTsView from "./views/MyNFTsView.js";
+import MyGodsView from "./views/MyGodsView.js";
 import NFTViewerView from "./views/NFTViewerView.js";
 
 export default async function init(config: IAppConfig) {
@@ -31,7 +32,8 @@ export default async function init(config: IAppConfig) {
 
   Router
     .add("/", IntroView)
-    .add("/my-nfts", MyNFTsView)
+    .add("/my-gods", MyGodsView)
+    .add("/god/:tokenId", GodDetailView)
     .add("/nft-viewer/:tokenId", NFTViewerView);
 
   Layout.init();

@@ -4,7 +4,7 @@ import {
   el,
 } from "https://raw.githubusercontent.com/yjgaia/deno-module/main/page.ts";
 import { introView } from "../pages/introView.ts";
-import { myNFTsView } from "../pages/myNFTsView.ts";
+import { myGodsView } from "../pages/myGodsView.ts";
 import { nftViewerView } from "../pages/nftViewerView.ts";
 import { layout } from "./pages/layout.ts";
 import { corsHeaders } from "https://raw.githubusercontent.com/yjgaia/deno-module/main/api.ts";
@@ -34,7 +34,7 @@ export function pages(
         headers: { "Content-Type": "text/html" },
       },
     );
-  } else if (path === "/my-nfts") {
+  } else if (path === "/my-gods") {
     return new Response(
       createPage(
         {
@@ -43,7 +43,7 @@ export function pages(
           cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
           gtagId: GTAG_ID,
         },
-        layout(myNFTsView()),
+        layout(myGodsView()),
       ),
       {
         status: 200,

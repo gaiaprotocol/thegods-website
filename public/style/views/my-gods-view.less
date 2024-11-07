@@ -1,0 +1,56 @@
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.my-gods-view {
+  margin-top: 86px;
+  max-width : 1128px;
+
+  @container (width <=@phone-width) {
+    margin-top: 54px;
+  }
+
+  >h1 {
+    font-size    : 36px;
+    margin-bottom: 42px;
+
+    @container (width <=@phone-width) {
+      font-size    : 27px;
+      margin-bottom: 27px;
+    }
+  }
+
+  >.empty {
+    display       : flex;
+    flex-direction: column;
+    align-items   : flex-start;
+    gap           : 42px;
+
+    @container (width <=@phone-width) {
+      gap: 27px;
+    }
+  }
+
+  >.balance {
+    display       : flex;
+    flex-direction: column;
+    align-items   : flex-start;
+    gap           : 12px;
+    margin-bottom : 42px;
+  }
+
+  >.skeleton>.skeleton-item {
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.1) 25%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.1) 75%);
+    background-size: 200% 100%;
+    animation      : skeleton-loading 1.5s infinite;
+  }
+}

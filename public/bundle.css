@@ -240,6 +240,9 @@ body {
 h1 {
   line-height: 1.1;
 }
+b {
+  font-weight: bold;
+}
 p {
   line-height: 1.5;
   word-break: break-word;
@@ -878,6 +881,36 @@ li.chat-message-list-item > main {
   justify-content: center;
   background-color: #171717;
 }
+.nft-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 13.5px;
+}
+.nft-list-item {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background-size: 100%;
+  background-position: center;
+  transition: background-size 0.3s ease-in-out;
+}
+.nft-list-item:hover {
+  background-size: 105%;
+}
+.nft-list-item > a {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+}
+.nft-list-item > a > h3 {
+  font-size: 13.5px;
+  flex-grow: 1;
+}
+.nft-list-item > a > p {
+  font-size: 16px;
+  line-height: 1.375;
+}
 .layout {
   padding-top: 72px;
 }
@@ -1002,13 +1035,14 @@ li.chat-message-list-item > main {
   max-width: 1128px;
   margin: 0 auto;
   padding: 0 20px;
-  font-size: 27px;
-  margin-bottom: 34px;
+  font-size: 36px;
+  margin-bottom: 42px;
+  text-align: center;
 }
 @container (width <= 520px) {
   .intro-view > section > h2 {
-    font-size: 23px;
-    margin-bottom: 13.5px;
+    font-size: 27px;
+    margin-bottom: 27px;
   }
 }
 .intro-view > section > ul {
@@ -1068,5 +1102,55 @@ li.chat-message-list-item > main {
 .nft-viewer-view > .nft-viewer > .loading-spinner {
   position: fixed;
   z-index: 999997;
+}
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+.my-gods-view {
+  margin-top: 86px;
+  max-width: 1128px;
+}
+@container (width <= 520px) {
+  .my-gods-view {
+    margin-top: 54px;
+  }
+}
+.my-gods-view > h1 {
+  font-size: 36px;
+  margin-bottom: 42px;
+}
+@container (width <= 520px) {
+  .my-gods-view > h1 {
+    font-size: 27px;
+    margin-bottom: 27px;
+  }
+}
+.my-gods-view > .empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 42px;
+}
+@container (width <= 520px) {
+  .my-gods-view > .empty {
+    gap: 27px;
+  }
+}
+.my-gods-view > .balance {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 42px;
+}
+.my-gods-view > .skeleton > .skeleton-item {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.1) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
 }
 

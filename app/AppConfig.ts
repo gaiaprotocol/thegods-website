@@ -54,15 +54,15 @@ class AppConfig implements IAppConfig {
       };
     };
 
-    SocialCompConfig.goLoggedInUserProfile = () => Router.go("/my-nfts");
+    SocialCompConfig.goLoggedInUserProfile = () => Router.go("/my-gods");
 
     SocialCompConfig.getLoggedInUserMenu = async (menu, user) =>
       new DropdownMenuGroup(
         new DropdownMenuItem({
           icon: new NFTIcon(),
-          label: "My NFTs",
+          label: "My Gods",
           onClick: () => {
-            Router.go("/my-nfts");
+            Router.go("/my-gods");
             menu.remove();
           },
         }),
