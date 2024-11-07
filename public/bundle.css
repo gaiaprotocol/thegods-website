@@ -981,6 +981,9 @@ li.chat-message-list-item > main {
   font-size: 13.5px;
   flex-grow: 1;
 }
+.intro-view > .nft-preview > .nft-viewer-container > .data > p {
+  line-height: 1.375;
+}
 .intro-view > .nft-preview > .buttons {
   display: flex;
   align-items: center;
@@ -992,8 +995,75 @@ li.chat-message-list-item > main {
     flex-direction: column;
   }
 }
-.intro-view > main {
+.intro-view > section {
   margin-top: 108px;
+}
+.intro-view > section > h2 {
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-size: 27px;
+  margin-bottom: 34px;
+}
+@container (width <= 520px) {
+  .intro-view > section > h2 {
+    font-size: 23px;
+    margin-bottom: 13.5px;
+  }
+}
+.intro-view > section > ul {
+  padding: 0 20px;
+  display: grid;
+  gap: 13.5px;
+  grid-template-columns: repeat(3, 1fr);
+}
+@container (width <= 800px) {
+  .intro-view > section > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@container (width <= 520px) {
+  .intro-view > section > ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.intro-view > section > ul > li {
+  display: block;
+  position: relative;
+  border-radius: 4.5px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+}
+@container (width <= 520px) {
+  .intro-view > section > ul > li {
+    aspect-ratio: 16 / 9;
+  }
+}
+.intro-view > section > ul > li > video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+.intro-view > section > ul > li > .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+.intro-view > section > ul > li > .content > h3 {
+  font-size: 13.5px;
+  flex-grow: 1;
+}
+.intro-view > section > ul > li > .content > p {
+  line-height: 1.375;
 }
 .nft-viewer-view > .nft-viewer > .loading-spinner {
   position: fixed;

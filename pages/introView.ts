@@ -27,6 +27,47 @@ export function introView<T>(): T {
       ),
     ),
     el(".nft-preview"),
-    el("main"),
+    el(
+      "section.benefits",
+      el("h2", "Holder benefits"),
+      el(
+        "ul",
+        el(
+          "li",
+          el(
+            "video",
+            { autoplay: true, loop: true, muted: true, playsInline: true },
+            el("source", {
+              src: "https://gaiaprotocol.com/videos/thegods.mp4",
+              type: "video/mp4",
+            }),
+          ),
+          el(
+            ".content",
+            el("h3", "Customizable avatars"),
+            el(
+              "p",
+              "Express your unique identity with our highly customizable NFT avatars.",
+            ),
+          ),
+        ),
+        el(
+          "li",
+          el(
+            ".content",
+            el("h3", "Community membership"),
+            el(
+              "p",
+              "Connect and engage with our development team in real-time through ",
+              el("a", "Valhalla", {
+                href: "https://valhalla.gaia.cc",
+                target: "_blank",
+              }),
+              ", our exclusive holder-only platform.",
+            ),
+          ),
+        ),
+      ),
+    ),
   );
 }
