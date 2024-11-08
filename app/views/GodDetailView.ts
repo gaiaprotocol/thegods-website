@@ -5,7 +5,7 @@ import {
   ButtonType,
 } from "@common-module/app-components";
 import { godDetailView } from "../../pages/godDetailView.js";
-import NFTAttributeForm from "../components/NFTAttributeForm.js";
+import NFTAttributeForm from "../components/nft-attribute-form/NFTAttributeForm.js";
 import NFTDisplay from "../components/NFTDisplay.js";
 import OpenSeaMetadata, {
   OpenSeaMetadataAttribute,
@@ -24,7 +24,7 @@ export default class GodDetailView extends View<Data> {
   }
 
   public async changeData(data: Data) {
-    this.container.empty().append(godDetailView(data.tokenId));
+    this.container.clear().append(godDetailView(data.tokenId));
 
     const loading = new AppCompConfig.LoadingSpinner().appendTo(this.container);
 

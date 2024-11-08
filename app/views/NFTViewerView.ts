@@ -8,7 +8,7 @@ export default class NFTViewerView extends View {
   }
 
   public changeData(data: { tokenId: string }): void {
-    this.container.empty().append(
+    this.container.clear().append(
       new NFTViewer(parseInt(data.tokenId), true),
     );
   }

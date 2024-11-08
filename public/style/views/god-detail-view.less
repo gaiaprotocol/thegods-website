@@ -37,13 +37,17 @@
       }
 
       >.nft-attribute-form {
-        width      : 50%;
-        flex-shrink: 0;
-        padding    : 68px;
+        width       : 50%;
+        flex-shrink : 0;
+        padding     : 68px;
+        aspect-ratio: 1;
+        overflow-y  : auto;
 
         @container (width <=@phone-width) {
-          width  : 100%;
-          padding: 22px 34px;
+          width       : 100%;
+          padding     : 22px 34px;
+          aspect-ratio: unset;
+          overflow-y  : visible;
         }
       }
     }

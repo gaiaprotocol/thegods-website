@@ -51,7 +51,7 @@ export default class NFTViewer extends DomNode<HTMLDivElement, {
   }
 
   private async loadMetadata() {
-    this.screen.root.empty();
+    this.screen.root.clear();
 
     const loading = new MaterialLoadingSpinner().appendTo(this);
     this.loading = true;

@@ -1,5 +1,6 @@
 import { Router } from "@common-module/app";
 import {
+  AppCompConfig,
   DropdownMenuGroup,
   DropdownMenuItem,
 } from "@common-module/app-components";
@@ -7,6 +8,8 @@ import { SocialCompConfig } from "@common-module/social-components";
 import { AuthTokenManager, SupabaseConnector } from "@common-module/supabase";
 import { AddressUtils } from "@common-module/wallet";
 import { GaiaProtocolConfig } from "gaiaprotocol";
+import AccordionCloseIcon from "./icons/AccordionCloseIcon.js";
+import AccordionOpenIcon from "./icons/AccordionOpenIcon.js";
 import NFTIcon from "./icons/NFTIcon.js";
 import GaiaNameRepository from "./repositories/GaiaNameRepository.js";
 
@@ -27,6 +30,9 @@ class AppConfig implements IAppConfig {
 
   public init(config: IAppConfig) {
     Object.assign(this, config);
+
+    AppCompConfig.AccordionOpenIcon = AccordionOpenIcon;
+    AppCompConfig.AccordionCloseIcon = AccordionCloseIcon;
 
     const authTokenManager = new AuthTokenManager("gaia-names-auth-token");
 

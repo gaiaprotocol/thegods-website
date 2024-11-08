@@ -44,7 +44,7 @@ export default class NFTDisplay extends DomNode {
   }
 
   public render() {
-    this.screen.root.empty();
+    this.screen.root.clear();
 
     const type = this.attributes.find((a) => a.trait_type === "Type")!.value;
     const gender = this.attributes.find((a) => a.trait_type === "Gender")!

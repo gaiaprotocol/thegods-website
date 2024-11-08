@@ -6,7 +6,7 @@ class Layout {
   private contentContainer = new QueriedDomNode(".layout main");
 
   public set content(content: DomNode) {
-    this.contentContainer.empty();
+    this.contentContainer.clear();
     this.contentContainer.htmlElement.innerHTML = "";
     this.contentContainer.append(content);
   }
