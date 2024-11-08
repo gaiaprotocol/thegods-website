@@ -931,6 +931,14 @@ li.chat-message-list-item > main {
   justify-content: center;
   background-color: #171717;
 }
+.nft-attribute-form .accordion-item > .content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.nft-attribute-form .accordion-item > .content > .test {
+  aspect-ratio: 1;
+}
 .layout {
   padding-top: 72px;
 }

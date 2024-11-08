@@ -77,6 +77,7 @@
     "scripts",
     "legacy",
     "public",
-    "server"
+    "server",
+    "utils"
   ]
 }
