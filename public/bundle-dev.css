@@ -1052,7 +1052,6 @@ li.chat-message-list-item > main {
   }
 }
 .intro-view > section > ul {
-  padding: 0 20px;
   display: grid;
   gap: 13.5px;
   grid-template-columns: repeat(3, 1fr);
@@ -1078,7 +1077,7 @@ li.chat-message-list-item > main {
 }
 @container (width <= 520px) {
   .intro-view > section > ul > li {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 1;
   }
 }
 .intro-view > section > ul > li.membership > .content > h3 {

@@ -104,8 +104,6 @@
     }
 
     >ul {
-      padding: 0 20px;
-
       display              : grid;
       gap                  : 13.5px;
       grid-template-columns: repeat(3, 1fr);
@@ -129,7 +127,7 @@
         background-position: center;
 
         @container (width <=@phone-width) {
-          aspect-ratio: 16 / 9;
+          aspect-ratio: 1;
         }
 
         &.membership>.content>h3 {
