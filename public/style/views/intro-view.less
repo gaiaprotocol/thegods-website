@@ -125,8 +125,15 @@
         overflow     : hidden;
         aspect-ratio : 3 / 4;
 
+        background-size    : cover;
+        background-position: center;
+
         @container (width <=@phone-width) {
           aspect-ratio: 16 / 9;
+        }
+
+        &.membership>.content>h3 {
+          text-shadow: 0px 0px 10px #000;
         }
 
         >video {

@@ -1073,11 +1073,16 @@ li.chat-message-list-item > main {
   border-radius: 4.5px;
   overflow: hidden;
   aspect-ratio: 3 / 4;
+  background-size: cover;
+  background-position: center;
 }
 @container (width <= 520px) {
   .intro-view > section > ul > li {
     aspect-ratio: 16 / 9;
   }
+}
+.intro-view > section > ul > li.membership > .content > h3 {
+  text-shadow: 0px 0px 10px #000;
 }
 .intro-view > section > ul > li > video {
   position: absolute;

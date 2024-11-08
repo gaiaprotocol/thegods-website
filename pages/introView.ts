@@ -52,7 +52,12 @@ export function introView<T>(): T {
           ),
         ),
         el(
-          "li",
+          "li.membership",
+          {
+            style: {
+              backgroundImage: "url('/images/valhalla.jpg')",
+            },
+          },
           el(
             ".content",
             el("h3", "Community membership"),
