@@ -1,13 +1,14 @@
 import { el as UniversalEl, html } from "@common-module/universal-page";
+import { corsHeaders } from "https://raw.githubusercontent.com/yjgaia/deno-module/main/api.ts";
 import {
   createPage,
   el,
 } from "https://raw.githubusercontent.com/yjgaia/deno-module/main/page.ts";
+import { godDetailView } from "../pages/godDetailView.ts";
 import { introView } from "../pages/introView.ts";
 import { myGodsView } from "../pages/myGodsView.ts";
 import { nftViewerView } from "../pages/nftViewerView.ts";
 import { layout } from "./pages/layout.ts";
-import { corsHeaders } from "https://raw.githubusercontent.com/yjgaia/deno-module/main/api.ts";
 
 UniversalEl.impl = el;
 html.impl = (htmlContent) => htmlContent;
@@ -64,6 +65,23 @@ export function pages(
       {
         status: 200,
         headers: { "Content-Type": "text/html", ...corsHeaders },
+      },
+    );
+  } else if (path.startsWith("/god/")) {
+    const tokenId = path.replace("/god/", "");
+    return new Response(
+      createPage(
+        {
+          title: (isDevMode ? "(Dev) " : "") + `God #${tokenId} | The Gods NFT`,
+          jsFiles: [isDevMode ? "/bundle-dev.js" : "/bundle.js"],
+          cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
+          gtagId: GTAG_ID,
+        },
+        layout(godDetailView(tokenId)),
+      ),
+      {
+        status: 200,
+        headers: { "Content-Type": "text/html" },
       },
     );
   }

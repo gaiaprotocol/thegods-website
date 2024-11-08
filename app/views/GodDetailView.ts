@@ -1,13 +1,21 @@
 import { el, View } from "@common-module/app";
+import {
+  AppCompConfig,
+  Button,
+  ButtonType,
+} from "@common-module/app-components";
+import { godDetailView } from "../../pages/godDetailView.js";
+import NFTAttributeForm from "../components/NFTAttributeForm.js";
+import NFTDisplay from "../components/NFTDisplay.js";
+import OpenSeaMetadata, {
+  OpenSeaMetadataAttribute,
+} from "../opensea/OpenSeaMetadata.js";
 import Layout from "./Layout.js";
-import { OpenSeaNFTData } from "gaiaprotocol";
 
-type Data =
-  | (OpenSeaNFTData & {
-    tokenId: string;
-    attributes?: { trait_type: string; value: string }[];
-  })
-  | { tokenId: string };
+type Data = {
+  tokenId: string;
+  attributes?: OpenSeaMetadataAttribute[];
+};
 
 export default class GodDetailView extends View<Data> {
   constructor() {
@@ -15,7 +23,44 @@ export default class GodDetailView extends View<Data> {
     Layout.content = this.container = el(".god-detail-view");
   }
 
-  public changeData(data: Data): void {
-    console.log(data);
+  public async changeData(data: Data) {
+    this.container.empty().append(godDetailView(data.tokenId));
+
+    const loading = new AppCompConfig.LoadingSpinner().appendTo(this.container);
+
+    let attributes: OpenSeaMetadataAttribute[] | undefined = data.attributes;
+
+    if (!attributes) {
+      const response = await fetch(
+        `https://dhzxulywizygtdficytt.supabase.co/functions/v1/god-metadata/${data.tokenId}`,
+      );
+      const data2: OpenSeaMetadata | undefined = await response.json();
+      attributes = data2?.attributes;
+    }
+
+    if (attributes) {
+      this.container.append(
+        el(
+          ".form-container",
+          el(
+            "main",
+            new NFTDisplay(attributes),
+            new NFTAttributeForm(attributes),
+          ),
+          el(
+            ".buttons",
+            new Button({
+              title: "Reset",
+            }),
+            new Button({
+              type: ButtonType.Contained,
+              title: "Save Changes",
+            }),
+          ),
+        ),
+      );
+    }
+
+    loading.remove();
   }
 }

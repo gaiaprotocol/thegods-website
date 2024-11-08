@@ -1,0 +1,66 @@
+.god-detail-view {
+  margin-top: 86px;
+  max-width : 1128px;
+
+  @container (width <=@phone-width) {
+    margin-top: 54px;
+  }
+
+  >h1 {
+    font-size    : 36px;
+    margin-bottom: 42px;
+
+    @container (width <=@phone-width) {
+      font-size    : 27px;
+      margin-bottom: 27px;
+    }
+  }
+
+  >.form-container {
+    >main {
+      display         : flex;
+      background-color: var(--modal-bg-color);
+      border-radius   : 8px;
+      overflow        : hidden;
+
+      @container (width <=@phone-width) {
+        flex-direction: column;
+      }
+
+      >.nft-display {
+        width      : 50%;
+        flex-shrink: 0;
+
+        @container (width <=@phone-width) {
+          width: 100%;
+        }
+      }
+
+      >.nft-attribute-form {
+        width      : 50%;
+        flex-shrink: 0;
+        padding    : 68px;
+
+        @container (width <=@phone-width) {
+          width  : 100%;
+          padding: 22px 34px;
+        }
+      }
+    }
+
+    >.buttons {
+      padding: 24px 0;
+
+      display        : flex;
+      align-items    : center;
+      justify-content: flex-end;
+      gap            : 16px;
+
+      @container (width <=@phone-width) {
+        >button {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+}

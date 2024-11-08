@@ -911,6 +911,20 @@ li.chat-message-list-item > main {
   font-size: 16px;
   line-height: 1.375;
 }
+.nft-display {
+  position: relative;
+}
+.nft-display > .loading-spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #171717;
+}
 .layout {
   padding-top: 72px;
 }
@@ -1156,5 +1170,67 @@ li.chat-message-list-item > main {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.1) 75%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
+}
+.god-detail-view {
+  margin-top: 86px;
+  max-width: 1128px;
+}
+@container (width <= 520px) {
+  .god-detail-view {
+    margin-top: 54px;
+  }
+}
+.god-detail-view > h1 {
+  font-size: 36px;
+  margin-bottom: 42px;
+}
+@container (width <= 520px) {
+  .god-detail-view > h1 {
+    font-size: 27px;
+    margin-bottom: 27px;
+  }
+}
+.god-detail-view > .form-container > main {
+  display: flex;
+  background-color: var(--modal-bg-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+@container (width <= 520px) {
+  .god-detail-view > .form-container > main {
+    flex-direction: column;
+  }
+}
+.god-detail-view > .form-container > main > .nft-display {
+  width: 50%;
+  flex-shrink: 0;
+}
+@container (width <= 520px) {
+  .god-detail-view > .form-container > main > .nft-display {
+    width: 100%;
+  }
+}
+.god-detail-view > .form-container > main > .nft-attribute-form {
+  width: 50%;
+  flex-shrink: 0;
+  padding: 68px;
+}
+@container (width <= 520px) {
+  .god-detail-view > .form-container > main > .nft-attribute-form {
+    width: 100%;
+    padding: 22px 34px;
+  }
+}
+.god-detail-view > .form-container > .buttons {
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+@container (width <= 520px) {
+  .god-detail-view > .form-container > .buttons > button {
+    flex-grow: 1;
+  }
 }
 

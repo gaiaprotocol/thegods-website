@@ -2,20 +2,7 @@ import { DomNode } from "@common-module/app";
 import { MaterialLoadingSpinner } from "@common-module/material-loading-spinner";
 import { GameScreen, LetterboxedScreen } from "@gaiaengine/2d";
 import { Spine } from "@gaiaengine/2d-spine";
-
-interface Attribute {
-  trait_type: string;
-  value: string;
-}
-
-interface OpenSeaMetadata {
-  name: string;
-  description: string;
-  image: string;
-  external_url: string;
-  animation_url?: string;
-  attributes: Attribute[];
-}
+import OpenSeaMetadata from "../opensea/OpenSeaMetadata.js";
 
 export default class NFTViewer extends DomNode<HTMLDivElement, {
   loaded: (data: OpenSeaMetadata) => void;

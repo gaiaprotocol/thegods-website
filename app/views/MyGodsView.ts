@@ -46,7 +46,9 @@ export default class MyGodsView extends View {
             "p",
             "You own ",
             el("b", String(data.balance)),
-            ` NFT${data.balance !== 1 ? "s" : ""}.`,
+            ` NFT${
+              data.balance !== 1 ? "s" : ""
+            }. Click on an NFT to view detailed information and customize it.`,
           ),
           el(
             "a.button.contained",
