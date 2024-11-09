@@ -944,32 +944,32 @@ li.chat-message-list-item > main {
   justify-content: center;
   background-color: #171717;
 }
-.nft-attribute-form .accordion-item > .content > .part-list {
+.nft-attribute-editor .accordion-item > .content > .part-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 @container (width <= 1000px) {
-  .nft-attribute-form .accordion-item > .content > .part-list {
+  .nft-attribute-editor .accordion-item > .content > .part-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @container (width <= 520px) {
-  .nft-attribute-form .accordion-item > .content > .part-list {
+  .nft-attribute-editor .accordion-item > .content > .part-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-.nft-attribute-form .accordion-item > .content > .part-list > .part-list-item {
+.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item {
   position: relative;
   aspect-ratio: 1;
 }
-.nft-attribute-form .accordion-item > .content > .part-list > .part-list-item > .name {
+.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .name {
   position: absolute;
   left: 12px;
   bottom: 12px;
   z-index: 1;
 }
-.nft-attribute-form .accordion-item > .content > .part-list > .part-list-item > .check-icon-container {
+.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .check-icon-container {
   position: absolute;
   right: 12px;
   top: 12px;
@@ -979,15 +979,15 @@ li.chat-message-list-item > main {
   height: 22px;
   border-radius: 50%;
 }
-.nft-attribute-form .accordion-item > .content > .part-list > .part-list-item > .check-icon-container > .icon {
+.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .check-icon-container > .icon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.nft-attribute-form .accordion-item > .content > .part-list > .part-list-item.selected > .check-icon-container {
+.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item.selected > .check-icon-container {
   border: 1px solid var(--paragraph-text-color);
 }
-.nft-attribute-form .accordion-item > .content > .part-list > .part-list-item > .game-screen {
+.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .game-screen {
   position: absolute;
   inset: 0;
   border-radius: 8px;
@@ -1277,7 +1277,7 @@ li.chat-message-list-item > main {
     width: 100%;
   }
 }
-.god-detail-view > .form-container > main > .nft-attribute-form {
+.god-detail-view > .form-container > main > .nft-attribute-editor {
   width: 50%;
   flex-shrink: 0;
   padding: 68px;
@@ -1285,7 +1285,7 @@ li.chat-message-list-item > main {
   overflow-y: auto;
 }
 @container (width <= 520px) {
-  .god-detail-view > .form-container > main > .nft-attribute-form {
+  .god-detail-view > .form-container > main > .nft-attribute-editor {
     width: 100%;
     padding: 22px 34px;
     aspect-ratio: unset;

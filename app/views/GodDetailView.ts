@@ -6,7 +6,7 @@ import {
 } from "@common-module/app-components";
 import { ObjectUtils } from "@common-module/ts";
 import { godDetailView } from "../../pages/godDetailView.js";
-import NFTAttributeForm from "../components/nft-attribute-form/NFTAttributeForm.js";
+import NFTAttributeForm from "../components/nft-attribute-form/NFTAttributeEditor.js";
 import NFTDisplay from "../components/NFTDisplay.js";
 import OpenSeaMetadata, {
   OpenSeaMetadataAttribute,
