@@ -886,10 +886,10 @@ li.chat-message-list-item > main {
   display: flex;
   align-items: center;
 }
-.nft-viewer {
+.god-viewer {
   position: relative;
 }
-.nft-viewer > .loading-spinner {
+.god-viewer > .loading-spinner {
   position: absolute;
   top: 0;
   left: 0;
@@ -900,40 +900,40 @@ li.chat-message-list-item > main {
   justify-content: center;
   background-color: #171717;
 }
-.nft-list {
+.god-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 13.5px;
 }
-.nft-list-item {
+.god-list-item {
   aspect-ratio: 1;
   border-radius: 8px;
   background-size: 100%;
   background-position: center;
   transition: background-size 0.3s ease-in-out;
 }
-.nft-list-item:hover {
+.god-list-item:hover {
   background-size: 105%;
 }
-.nft-list-item > a {
+.god-list-item > a {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
   padding: 12px;
 }
-.nft-list-item > a > h3 {
+.god-list-item > a > h3 {
   font-size: 13.5px;
   flex-grow: 1;
 }
-.nft-list-item > a > p {
+.god-list-item > a > p {
   font-size: 16px;
   line-height: 1.375;
 }
-.nft-display {
+.god-display {
   position: relative;
 }
-.nft-display > .loading-spinner {
+.god-display > .loading-spinner {
   position: absolute;
   top: 0;
   left: 0;
@@ -944,32 +944,32 @@ li.chat-message-list-item > main {
   justify-content: center;
   background-color: #171717;
 }
-.nft-attribute-editor .accordion-item > .content > .part-list {
+.god-attribute-editor .accordion-item > .content > .part-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 @container (width <= 1000px) {
-  .nft-attribute-editor .accordion-item > .content > .part-list {
+  .god-attribute-editor .accordion-item > .content > .part-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @container (width <= 520px) {
-  .nft-attribute-editor .accordion-item > .content > .part-list {
+  .god-attribute-editor .accordion-item > .content > .part-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item {
+.god-attribute-editor .accordion-item > .content > .part-list > .part-list-item {
   position: relative;
   aspect-ratio: 1;
 }
-.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .name {
+.god-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .name {
   position: absolute;
   left: 12px;
   bottom: 12px;
   z-index: 1;
 }
-.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .check-icon-container {
+.god-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .check-icon-container {
   position: absolute;
   right: 12px;
   top: 12px;
@@ -979,15 +979,15 @@ li.chat-message-list-item > main {
   height: 22px;
   border-radius: 50%;
 }
-.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .check-icon-container > .icon {
+.god-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .check-icon-container > .icon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item.selected > .check-icon-container {
+.god-attribute-editor .accordion-item > .content > .part-list > .part-list-item.selected > .check-icon-container {
   border: 1px solid var(--paragraph-text-color);
 }
-.nft-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .game-screen {
+.god-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .game-screen {
   position: absolute;
   inset: 0;
   border-radius: 8px;
@@ -1062,24 +1062,24 @@ li.chat-message-list-item > main {
   justify-content: center;
   margin-top: 34px;
 }
-.intro-view > .nft-preview {
+.intro-view > .god-preview {
   max-width: 725px;
   margin: 80px auto 0;
   display: flex;
   flex-direction: column;
   gap: 54px;
 }
-.intro-view > .nft-preview > .nft-viewer-container {
+.intro-view > .god-preview > .god-viewer-container {
   position: relative;
 }
-.intro-view > .nft-preview > .nft-viewer-container > .nft-viewer {
+.intro-view > .god-preview > .god-viewer-container > .god-viewer {
   width: 100%;
 }
-.intro-view > .nft-preview > .nft-viewer-container > .nft-viewer > .game-screen > canvas,
-.intro-view > .nft-preview > .nft-viewer-container > .nft-viewer > .loading-spinner {
+.intro-view > .god-preview > .god-viewer-container > .god-viewer > .game-screen > canvas,
+.intro-view > .god-preview > .god-viewer-container > .god-viewer > .loading-spinner {
   border-radius: 8px;
 }
-.intro-view > .nft-preview > .nft-viewer-container > .data {
+.intro-view > .god-preview > .god-viewer-container > .data {
   position: absolute;
   top: 0;
   left: 0;
@@ -1091,21 +1091,21 @@ li.chat-message-list-item > main {
   cursor: pointer;
   user-select: none;
 }
-.intro-view > .nft-preview > .nft-viewer-container > .data > h2 {
+.intro-view > .god-preview > .god-viewer-container > .data > h2 {
   font-size: 13.5px;
   flex-grow: 1;
 }
-.intro-view > .nft-preview > .nft-viewer-container > .data > p {
+.intro-view > .god-preview > .god-viewer-container > .data > p {
   line-height: 1.375;
 }
-.intro-view > .nft-preview > .buttons {
+.intro-view > .god-preview > .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 22px;
 }
 @container (width <= 520px) {
-  .intro-view > .nft-preview > .buttons {
+  .intro-view > .god-preview > .buttons {
     flex-direction: column;
   }
 }
@@ -1184,7 +1184,7 @@ li.chat-message-list-item > main {
 .intro-view > section > ul > li > .content > p {
   line-height: 1.375;
 }
-.nft-viewer-view > .nft-viewer > .loading-spinner {
+.god-viewer-view > .god-viewer > .loading-spinner {
   position: fixed;
   z-index: 999997;
 }
@@ -1205,33 +1205,20 @@ li.chat-message-list-item > main {
     margin-top: 54px;
   }
 }
-.my-gods-view > h1 {
-  font-size: 36px;
-  margin-bottom: 42px;
-}
-@container (width <= 520px) {
-  .my-gods-view > h1 {
-    font-size: 27px;
-    margin-bottom: 27px;
-  }
-}
-.my-gods-view > .empty {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 42px;
-}
-@container (width <= 520px) {
-  .my-gods-view > .empty {
-    gap: 27px;
-  }
-}
-.my-gods-view > .balance {
+.my-gods-view > header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
   margin-bottom: 42px;
+}
+.my-gods-view > header > h1 {
+  font-size: 36px;
+}
+@container (width <= 520px) {
+  .my-gods-view > header > h1 {
+    font-size: 27px;
+  }
 }
 .my-gods-view > .skeleton > .skeleton-item {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.1) 75%);
@@ -1247,12 +1234,18 @@ li.chat-message-list-item > main {
     margin-top: 54px;
   }
 }
-.god-detail-view > h1 {
-  font-size: 36px;
+.god-detail-view > header {
   margin-bottom: 42px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+.god-detail-view > header > h1 {
+  font-size: 36px;
 }
 @container (width <= 520px) {
-  .god-detail-view > h1 {
+  .god-detail-view > header > h1 {
     font-size: 27px;
     margin-bottom: 27px;
   }
@@ -1268,16 +1261,16 @@ li.chat-message-list-item > main {
     flex-direction: column;
   }
 }
-.god-detail-view > .form-container > main > .nft-display {
+.god-detail-view > .form-container > main > .god-display {
   width: 50%;
   flex-shrink: 0;
 }
 @container (width <= 520px) {
-  .god-detail-view > .form-container > main > .nft-display {
+  .god-detail-view > .form-container > main > .god-display {
     width: 100%;
   }
 }
-.god-detail-view > .form-container > main > .nft-attribute-editor {
+.god-detail-view > .form-container > main > .god-attribute-editor {
   width: 50%;
   flex-shrink: 0;
   padding: 68px;
@@ -1285,7 +1278,7 @@ li.chat-message-list-item > main {
   overflow-y: auto;
 }
 @container (width <= 520px) {
-  .god-detail-view > .form-container > main > .nft-attribute-editor {
+  .god-detail-view > .form-container > main > .god-attribute-editor {
     width: 100%;
     padding: 22px 34px;
     aspect-ratio: unset;

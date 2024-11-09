@@ -20,7 +20,7 @@ const config: webpack.Configuration = {
   },
   entry: {
     "bundle": "./app/prod.ts",
-    "nft-viewer": "./app/nft-viewer-prod.ts",
+    "god-viewer": "./app/god-viewer-prod.ts",
     __less: "./public/style/main.less",
   },
   module: {

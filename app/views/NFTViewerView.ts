@@ -1,15 +1,15 @@
 import { QueriedDomNode, View } from "@common-module/app";
-import NFTViewer from "../components/NFTViewer.js";
+import GodViewer from "../components/GodViewer.js";
 
 export default class NFTViewerView extends View {
   constructor() {
     super();
-    this.container = new QueriedDomNode(".nft-viewer-view");
+    this.container = new QueriedDomNode(".god-viewer-view");
   }
 
   public changeData(data: { tokenId: string }): void {
     this.container.clear().append(
-      new NFTViewer(parseInt(data.tokenId), true),
+      new GodViewer(parseInt(data.tokenId), true),
     );
   }
 }

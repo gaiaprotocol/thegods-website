@@ -6,8 +6,8 @@ import {
 } from "@common-module/app-components";
 import { ObjectUtils } from "@common-module/ts";
 import { godDetailView } from "../../pages/godDetailView.js";
-import NFTAttributeForm from "../components/nft-attribute-form/NFTAttributeEditor.js";
-import NFTDisplay from "../components/NFTDisplay.js";
+import GodAttributeEditor from "../components/god-attribute-editor/GodAttributeEditor.js";
+import GodDisplay from "../components/GodDisplay.js";
 import OpenSeaMetadata, {
   OpenSeaMetadataAttribute,
 } from "../opensea/OpenSeaMetadata.js";
@@ -20,8 +20,8 @@ type Data = {
 };
 
 export default class GodDetailView extends View<Data> {
-  private nftDisplay: NFTDisplay | undefined;
-  private nftAttributeForm: NFTAttributeForm | undefined;
+  private nftDisplay: GodDisplay | undefined;
+  private nftAttributeForm: GodAttributeEditor | undefined;
 
   constructor() {
     super();
@@ -49,8 +49,8 @@ export default class GodDetailView extends View<Data> {
           ".form-container",
           el(
             "main",
-            this.nftDisplay = new NFTDisplay(attributes),
-            this.nftAttributeForm = new NFTAttributeForm(attributes),
+            this.nftDisplay = new GodDisplay(attributes),
+            this.nftAttributeForm = new GodAttributeEditor(attributes),
           ),
           el(
             ".buttons",

@@ -26,7 +26,7 @@ export function introView<T>(): T {
         ),
       ),
     ),
-    el(".nft-preview"),
+    el(".god-preview"),
     el(
       "section.benefits",
       el("h2", "Holder benefits"),

@@ -5,9 +5,9 @@ import {
   el,
 } from "https://raw.githubusercontent.com/yjgaia/deno-module/main/page.ts";
 import { godDetailView } from "../pages/godDetailView.ts";
+import { godViewerView } from "../pages/godViewerView.ts";
 import { introView } from "../pages/introView.ts";
 import { myGodsView } from "../pages/myGodsView.ts";
-import { nftViewerView } from "../pages/nftViewerView.ts";
 import { layout } from "./pages/layout.ts";
 
 UniversalEl.impl = el;
@@ -51,16 +51,16 @@ export function pages(
         headers: { "Content-Type": "text/html" },
       },
     );
-  } else if (path.startsWith("/nft-viewer/")) {
+  } else if (path.startsWith("/god-viewer/")) {
     return new Response(
       createPage(
         {
-          title: (isDevMode ? "(Dev) " : "") + "NFT Viewer | The Gods NFT",
-          jsFiles: [isDevMode ? "/nft-viewer-dev.js" : "/nft-viewer.js"],
+          title: (isDevMode ? "(Dev) " : "") + "God Viewer | The Gods NFT",
+          jsFiles: [isDevMode ? "/god-viewer-dev.js" : "/god-viewer.js"],
           cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
           gtagId: GTAG_ID,
         },
-        nftViewerView(),
+        godViewerView(),
       ),
       {
         status: 200,

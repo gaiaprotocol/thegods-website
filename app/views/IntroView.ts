@@ -3,7 +3,7 @@ import { Button, ButtonType } from "@common-module/app-components";
 import { IntegerUtils } from "@common-module/ts";
 import { introView } from "../../pages/introView.js";
 import AppConfig from "../AppConfig.js";
-import NFTViewer from "../components/NFTViewer.js";
+import GodViewer from "../components/GodViewer.js";
 import OpenInNewIcon from "../icons/OpenInNewIcon.js";
 import RefreshIcon from "../icons/RefreshIcon.js";
 import Layout from "./Layout.js";
@@ -13,11 +13,11 @@ export default class IntroView extends View {
     super();
     Layout.content = this.container = introView();
 
-    let nftViewer: NFTViewer;
-    new QueriedDomNode(".nft-preview").append(
+    let nftViewer: GodViewer;
+    new QueriedDomNode(".god-preview").append(
       el(
-        ".nft-viewer-container",
-        nftViewer = new NFTViewer(IntegerUtils.random(0, 3332)),
+        ".god-viewer-container",
+        nftViewer = new GodViewer(IntegerUtils.random(0, 3332)),
         { onclick: () => nftViewer.touch() },
       ),
       el(
@@ -29,7 +29,7 @@ export default class IntroView extends View {
           title: "View another NFT",
           onClick: () => {
             if (!nftViewer.loading) {
-              new QueriedDomNode(".nft-preview .nft-viewer-container .data")
+              new QueriedDomNode(".god-preview .god-viewer-container .data")
                 .remove();
               nftViewer.tokenId = IntegerUtils.random(0, 3332);
             }
@@ -49,8 +49,8 @@ export default class IntroView extends View {
     );
 
     nftViewer.on("loaded", (data) => {
-      new QueriedDomNode(".nft-preview .nft-viewer-container .data").remove();
-      new QueriedDomNode(".nft-preview .nft-viewer-container").append(
+      new QueriedDomNode(".god-preview .god-viewer-container .data").remove();
+      new QueriedDomNode(".god-preview .god-viewer-container").append(
         el(
           ".data",
           el("h2", `#${nftViewer.tokenId}`),

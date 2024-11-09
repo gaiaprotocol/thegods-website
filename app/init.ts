@@ -34,7 +34,7 @@ export default async function init(config: IAppConfig) {
     .add("/", IntroView)
     .add("/my-gods", MyGodsView)
     .add("/god/:tokenId", GodDetailView)
-    .add("/nft-viewer/:tokenId", NFTViewerView);
+    .add("/god-viewer/:tokenId", NFTViewerView);
 
   Layout.init();
 }
