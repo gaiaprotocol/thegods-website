@@ -4,12 +4,14 @@ import {
   Button,
   ButtonType,
 } from "@common-module/app-components";
+import { ObjectUtils } from "@common-module/ts";
 import { godDetailView } from "../../pages/godDetailView.js";
 import NFTAttributeForm from "../components/nft-attribute-form/NFTAttributeForm.js";
 import NFTDisplay from "../components/NFTDisplay.js";
 import OpenSeaMetadata, {
   OpenSeaMetadataAttribute,
 } from "../opensea/OpenSeaMetadata.js";
+import GodMetadataUtils from "../utils/GodMetadataUtils.js";
 import Layout from "./Layout.js";
 
 type Data = {
@@ -18,6 +20,9 @@ type Data = {
 };
 
 export default class GodDetailView extends View<Data> {
+  private nftDisplay: NFTDisplay | undefined;
+  private nftAttributeForm: NFTAttributeForm | undefined;
+
   constructor() {
     super();
     Layout.content = this.container = el(".god-detail-view");
@@ -44,8 +49,8 @@ export default class GodDetailView extends View<Data> {
           ".form-container",
           el(
             "main",
-            new NFTDisplay(attributes),
-            new NFTAttributeForm(attributes),
+            this.nftDisplay = new NFTDisplay(attributes),
+            this.nftAttributeForm = new NFTAttributeForm(attributes),
           ),
           el(
             ".buttons",
@@ -59,6 +64,20 @@ export default class GodDetailView extends View<Data> {
           ),
         ),
       );
+
+      this.nftAttributeForm.on("metadataChanged", (metadata) => {
+        if (this.nftDisplay) {
+          const attributes = GodMetadataUtils.convertMetadataToAttributes(
+            metadata,
+          );
+          if (!ObjectUtils.isEqual(this.nftDisplay.attributes, attributes)) {
+            this.nftDisplay.attributes = attributes;
+          }
+        }
+      });
+    } else {
+      this.nftDisplay = undefined;
+      this.nftAttributeForm = undefined;
     }
 
     loading.remove();

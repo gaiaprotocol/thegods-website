@@ -1,5 +1,6 @@
 import { DomNode } from "@common-module/app";
 import { Accordion, AccordionItem } from "@common-module/app-components";
+import { Debouncer } from "@common-module/ts";
 import GodMetadata from "../../entities/GodMetadata.js";
 import { OpenSeaMetadataAttribute } from "../../opensea/OpenSeaMetadata.js";
 import GodMetadataUtils from "../../utils/GodMetadataUtils.js";
@@ -38,7 +39,9 @@ const PARTS: any = {
   },
 };
 
-export default class NFTAttributeForm extends DomNode {
+export default class NFTAttributeForm extends DomNode<HTMLDivElement, {
+  metadataChanged: (metadata: GodMetadata) => void;
+}> {
   private metadata: GodMetadata;
 
   private accordion: Accordion;
@@ -91,12 +94,17 @@ export default class NFTAttributeForm extends DomNode {
 
     this.typePartList.on("select", (type) => {
       this.metadata.type = type;
+      this.metadataChangedEventDebouncer.execute();
       this.createGenderAccordionItem();
     });
 
     this.metadata = GodMetadataUtils.convertAttributesToMetadata(attributes);
     this.typePartList.select(this.metadata.type);
   }
+
+  private metadataChangedEventDebouncer = new Debouncer(100, () => {
+    this.emit("metadataChanged", this.metadata);
+  });
 
   private createGenderAccordionItem() {
     const genderPartList = new PartList([
@@ -127,6 +135,7 @@ export default class NFTAttributeForm extends DomNode {
 
     genderPartList.on("select", (gender) => {
       this.metadata.gender = gender;
+      this.metadataChangedEventDebouncer.execute();
       this.createPartsAccordionItem();
     });
 
@@ -134,7 +143,42 @@ export default class NFTAttributeForm extends DomNode {
   }
 
   private createPartsAccordionItem() {
-    this.accordion.clear(this.typeAccordionItem, this.genderAccordionItem)
-      .append();
+    this.accordion.clear(this.typeAccordionItem, this.genderAccordionItem);
+
+    for (const part of PARTS[this.metadata.type][this.metadata.gender]) {
+      if (this.metadata.parts[part.name] === undefined) {
+        this.metadata.parts[part.name] = part.parts[0].name;
+      } else if (
+        !part.parts.find((p: any) => p.name === this.metadata.parts[part.name])
+      ) {
+        this.metadata.parts[part.name] = part.parts[0].name;
+      }
+    }
+
+    for (const part of PARTS[this.metadata.type][this.metadata.gender]) {
+      const partList = new PartList(part.parts.map((p: any) => ({
+        name: p.name,
+        type: this.metadata.type,
+        gender: this.metadata.gender,
+        parts: {
+          ...this.metadata.parts,
+          [part.name]: p.name,
+        },
+      })));
+
+      this.accordion.append(
+        new AccordionItem(
+          { label: part.name, open: true },
+          partList,
+        ),
+      );
+
+      partList.on("select", (partName) => {
+        this.metadata.parts[part.name] = partName;
+        this.metadataChangedEventDebouncer.execute();
+      });
+
+      partList.select(this.metadata.parts[part.name]);
+    }
   }
 }
