@@ -42,21 +42,27 @@ const PARTS_DATA: Record<string, Record<string, any>> = {
 export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
   metadataChanged: (metadata: GodMetadata) => void;
 }> {
-  private metadata: GodMetadata;
-  private readonly accordion: Accordion;
-  private readonly typeAccordionItem: AccordionItem;
-  private readonly typeSelector: PartList;
+  private _attributes: OpenSeaMetadataAttribute[] = [];
+
+  public metadata!: GodMetadata;
+
+  private accordion!: Accordion;
+  private typeAccordionItem!: AccordionItem;
+  private typeSelector!: PartList;
   private genderAccordionItem?: AccordionItem;
-  private readonly metadataChangeDebouncer: Debouncer;
+
+  private readonly metadataChangeDebouncer = new Debouncer(100, () => {
+    this.emit("metadataChanged", this.metadata);
+  });
 
   constructor(attributes: OpenSeaMetadataAttribute[]) {
     super(".god-attribute-editor");
+    this.attributes = attributes;
+  }
 
+  public set attributes(attributes: OpenSeaMetadataAttribute[]) {
+    this._attributes = attributes;
     this.metadata = GodMetadataUtils.convertAttributesToMetadata(attributes);
-
-    this.metadataChangeDebouncer = new Debouncer(100, () => {
-      this.emit("metadataChanged", this.metadata);
-    });
 
     this.typeSelector = this.createTypeSelector();
     this.typeAccordionItem = new AccordionItem(
@@ -65,7 +71,7 @@ export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
     );
 
     this.accordion = new Accordion(this.typeAccordionItem);
-    this.append(this.accordion);
+    this.clear().append(this.accordion);
 
     this.typeSelector.on("select", (selectedType) => {
       this.metadata.type = selectedType;
@@ -74,6 +80,10 @@ export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
     });
 
     this.typeSelector.select(this.metadata.type);
+  }
+
+  public get attributes() {
+    return this._attributes;
   }
 
   private createTypeSelector(): PartList {
