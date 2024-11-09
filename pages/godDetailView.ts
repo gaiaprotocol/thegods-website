@@ -1,6 +1,6 @@
 import { el, html } from "@common-module/universal-page";
 
-export function godDetailView<T>(tokenId: string): T {
+export function godDetailView<T>(tokenId: number): T {
   return el(
     ".god-detail-view",
     el(

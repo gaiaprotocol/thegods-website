@@ -7,7 +7,9 @@ import {
 } from "@common-module/app-components";
 import { ObjectUtils } from "@common-module/ts";
 import { godDetailView } from "../../pages/godDetailView.js";
+import AppConfig from "../AppConfig.js";
 import GodAttributeEditor from "../components/god-attribute-editor/GodAttributeEditor.js";
+import GodImageConstructor from "../components/god-attribute-editor/GodImageConstructor.js";
 import GodDisplay from "../components/GodDisplay.js";
 import OpenSeaMetadata, {
   OpenSeaMetadataAttribute,
@@ -21,6 +23,7 @@ type Data = {
 };
 
 export default class GodDetailView extends View<Data> {
+  private tokenId!: number;
   private originalAttributes: OpenSeaMetadataAttribute[] = [];
 
   private nftDisplay: GodDisplay | undefined;
@@ -34,7 +37,8 @@ export default class GodDetailView extends View<Data> {
   }
 
   public async changeData(data: Data) {
-    this.container.clear().append(godDetailView(data.tokenId));
+    this.tokenId = parseInt(data.tokenId);
+    this.container.clear().append(godDetailView(this.tokenId));
 
     const loading = new AppCompConfig.LoadingSpinner().appendTo(this.container);
 
@@ -84,19 +88,12 @@ export default class GodDetailView extends View<Data> {
               type: ButtonType.Contained,
               title: "Save Changes",
               disabled: true,
-              onClick: () => {
-                new Confirm({
+              onClick: async () => {
+                await new Confirm({
                   title: "Save Changes",
                   message: "Are you sure you want to save the changes?",
-                  onConfirm: () => {
-                    if (this.nftAttributeForm) {
-                      this.originalAttributes = GodMetadataUtils
-                        .convertMetadataToAttributes(
-                          this.nftAttributeForm.metadata,
-                        );
-                    }
-                  },
-                });
+                  onConfirm: () => this.saveChanges(),
+                }).waitForConfirmation();
               },
             }),
           ),
@@ -128,5 +125,35 @@ export default class GodDetailView extends View<Data> {
     }
 
     loading.remove();
+  }
+
+  public async saveChanges() {
+    if (this.nftAttributeForm) {
+      const blob = await GodImageConstructor.constructImage(
+        this.nftAttributeForm.metadata,
+      );
+
+      const formData = new FormData();
+      formData.append("file", blob);
+      formData.append("tokenId", this.tokenId.toString());
+      formData.append(
+        "metadata",
+        JSON.stringify(this.nftAttributeForm.metadata),
+      );
+
+      await AppConfig.supabaseConnector.callEdgeFunction(
+        "set-god-metadata",
+        formData,
+      );
+
+      this.originalAttributes = GodMetadataUtils.convertMetadataToAttributes(
+        this.nftAttributeForm.metadata,
+      );
+
+      if (this.nftDisplay) {
+        this.nftDisplay.attributes = this.originalAttributes;
+      }
+      this.nftAttributeForm.attributes = this.originalAttributes;
+    }
   }
 }

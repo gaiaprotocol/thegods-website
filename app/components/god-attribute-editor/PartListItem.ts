@@ -1,22 +1,22 @@
 import { DomNode, el } from "@common-module/app";
 import { GameScreen, Sprite } from "@gaiaengine/dom";
 import CheckIcon from "../../icons/CheckIcon.js";
-import fireManParts from "./parts-jsons/fire-man-parts.json" with {
+import fireManParts from "../parts-jsons/fire-man-parts.json" with {
   type: "json",
 };
-import fireWomanParts from "./parts-jsons/fire-woman-parts.json" with {
+import fireWomanParts from "../parts-jsons/fire-woman-parts.json" with {
   type: "json",
 };
-import stoneManParts from "./parts-jsons/stone-man-parts.json" with {
+import stoneManParts from "../parts-jsons/stone-man-parts.json" with {
   type: "json",
 };
-import stoneWomanParts from "./parts-jsons/stone-woman-parts.json" with {
+import stoneWomanParts from "../parts-jsons/stone-woman-parts.json" with {
   type: "json",
 };
-import waterManParts from "./parts-jsons/water-man-parts.json" with {
+import waterManParts from "../parts-jsons/water-man-parts.json" with {
   type: "json",
 };
-import waterWomanParts from "./parts-jsons/water-woman-parts.json" with {
+import waterWomanParts from "../parts-jsons/water-woman-parts.json" with {
   type: "json",
 };
 import keyToSpritesheet from "./spritesheet/key-to-spritesheet.json" with {
@@ -113,6 +113,7 @@ export default class PartListItem extends DomNode {
             (keyToSpritesheet as any)[metadata.type.toLocaleLowerCase()][
               image.path
             ];
+
           const sprite = new Sprite(
             0,
             0,

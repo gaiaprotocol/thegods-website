@@ -77,7 +77,7 @@ export function pages(
           cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
           gtagId: GTAG_ID,
         },
-        layout(godDetailView(tokenId)),
+        layout(godDetailView(parseInt(tokenId))),
       ),
       {
         status: 200,

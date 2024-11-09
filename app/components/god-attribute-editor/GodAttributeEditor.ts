@@ -5,22 +5,22 @@ import GodMetadata from "../../entities/GodMetadata.js";
 import { OpenSeaMetadataAttribute } from "../../opensea/OpenSeaMetadata.js";
 import GodMetadataUtils from "../../utils/GodMetadataUtils.js";
 import PartList from "./PartList.js";
-import fireManParts from "./parts-jsons/fire-man-parts.json" with {
+import fireManParts from "../parts-jsons/fire-man-parts.json" with {
   type: "json",
 };
-import fireWomanParts from "./parts-jsons/fire-woman-parts.json" with {
+import fireWomanParts from "../parts-jsons/fire-woman-parts.json" with {
   type: "json",
 };
-import stoneManParts from "./parts-jsons/stone-man-parts.json" with {
+import stoneManParts from "../parts-jsons/stone-man-parts.json" with {
   type: "json",
 };
-import stoneWomanParts from "./parts-jsons/stone-woman-parts.json" with {
+import stoneWomanParts from "../parts-jsons/stone-woman-parts.json" with {
   type: "json",
 };
-import waterManParts from "./parts-jsons/water-man-parts.json" with {
+import waterManParts from "../parts-jsons/water-man-parts.json" with {
   type: "json",
 };
-import waterWomanParts from "./parts-jsons/water-woman-parts.json" with {
+import waterWomanParts from "../parts-jsons/water-woman-parts.json" with {
   type: "json",
 };
 

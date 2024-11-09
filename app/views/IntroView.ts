@@ -2,7 +2,6 @@ import { el, QueriedDomNode, View } from "@common-module/app";
 import { Button, ButtonType } from "@common-module/app-components";
 import { IntegerUtils } from "@common-module/ts";
 import { introView } from "../../pages/introView.js";
-import AppConfig from "../AppConfig.js";
 import GodViewer from "../components/GodViewer.js";
 import OpenInNewIcon from "../icons/OpenInNewIcon.js";
 import RefreshIcon from "../icons/RefreshIcon.js";
@@ -63,18 +62,5 @@ export default class IntroView extends View {
         ),
       );
     });
-
-    this.test();
-  }
-
-  private async test() {
-    console.log(
-      await AppConfig.supabaseConnector.callEdgeFunction(
-        "set-god-metadata",
-        {
-          tokenId: 2987,
-        },
-      ),
-    );
   }
 }
