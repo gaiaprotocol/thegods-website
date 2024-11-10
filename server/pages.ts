@@ -39,7 +39,7 @@ export function pages(
     return new Response(
       createPage(
         {
-          title: (isDevMode ? "(Dev) " : "") + "Profile | The Gods NFT",
+          title: (isDevMode ? "(Dev) " : "") + "Profile - The Gods NFT",
           jsFiles: [isDevMode ? "/bundle-dev.js" : "/bundle.js"],
           cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
           gtagId: GTAG_ID,
@@ -55,7 +55,7 @@ export function pages(
     return new Response(
       createPage(
         {
-          title: (isDevMode ? "(Dev) " : "") + "God Viewer | The Gods NFT",
+          title: (isDevMode ? "(Dev) " : "") + "God Viewer - The Gods NFT",
           jsFiles: [isDevMode ? "/god-viewer-dev.js" : "/god-viewer.js"],
           cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
           gtagId: GTAG_ID,
@@ -72,7 +72,7 @@ export function pages(
     return new Response(
       createPage(
         {
-          title: (isDevMode ? "(Dev) " : "") + `God #${tokenId} | The Gods NFT`,
+          title: (isDevMode ? "(Dev) " : "") + `God #${tokenId} - The Gods NFT`,
           jsFiles: [isDevMode ? "/bundle-dev.js" : "/bundle.js"],
           cssFiles: [isDevMode ? "/bundle-dev.css" : "/bundle.css"],
           gtagId: GTAG_ID,
