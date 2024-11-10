@@ -51,7 +51,7 @@ export function introView<T>(): T {
             ),
           ),
         ),
-        el(
+        /*el(
           "li.membership",
           {
             style: {
@@ -78,7 +78,7 @@ export function introView<T>(): T {
               ", our exclusive holder-only platform.",
             ),
           ),
-        ),
+        ),*/
       ),
     ),
   );
