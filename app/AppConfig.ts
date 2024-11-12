@@ -12,6 +12,8 @@ import AccordionCloseIcon from "./icons/AccordionCloseIcon.js";
 import AccordionOpenIcon from "./icons/AccordionOpenIcon.js";
 import NFTIcon from "./icons/NFTIcon.js";
 import GaiaNameRepository from "./repositories/GaiaNameRepository.js";
+import { MaterialLoadingSpinner } from "@common-module/material-loading-spinner";
+import ErrorIcon from "./icons/ErrorIcon.js";
 
 export interface IAppConfig {
   isDevMode: boolean;
@@ -31,6 +33,8 @@ class AppConfig implements IAppConfig {
   public init(config: IAppConfig) {
     Object.assign(this, config);
 
+    AppCompConfig.LoadingSpinner = MaterialLoadingSpinner;
+    AppCompConfig.ErrorAlertIcon = ErrorIcon;
     AppCompConfig.AccordionOpenIcon = AccordionOpenIcon;
     AppCompConfig.AccordionCloseIcon = AccordionCloseIcon;
 

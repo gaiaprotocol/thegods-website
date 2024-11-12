@@ -1299,4 +1299,12 @@ li.chat-message-list-item > main {
     flex-grow: 1;
   }
 }
+.error-alert > main > p > a {
+  display: inline-flex;
+  align-items: center;
+}
+.error-alert > main > p > a > .icon {
+  display: flex;
+  align-items: center;
+}
 

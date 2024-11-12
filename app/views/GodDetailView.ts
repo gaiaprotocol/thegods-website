@@ -4,6 +4,7 @@ import {
   Button,
   ButtonType,
   Confirm,
+  ErrorAlert,
 } from "@common-module/app-components";
 import { ObjectUtils } from "@common-module/ts";
 import { godDetailView } from "../../pages/godDetailView.js";
@@ -11,6 +12,7 @@ import AppConfig from "../AppConfig.js";
 import GodAttributeEditor from "../components/god-attribute-editor/GodAttributeEditor.js";
 import GodImageConstructor from "../components/god-attribute-editor/GodImageConstructor.js";
 import GodDisplay from "../components/GodDisplay.js";
+import OpenInNewIcon from "../icons/OpenInNewIcon.js";
 import OpenSeaMetadata, {
   OpenSeaMetadataAttribute,
 } from "../opensea/OpenSeaMetadata.js";
@@ -129,6 +131,30 @@ export default class GodDetailView extends View<Data> {
 
   public async saveChanges() {
     if (this.nftAttributeForm) {
+      const metadata = this.nftAttributeForm.metadata;
+
+      const result = await AppConfig.supabaseConnector.callEdgeFunction<
+        { duplicatedTokenId?: number }
+      >(
+        "check-god-metadata-duplicated",
+        { metadata },
+      );
+
+      if (result.duplicatedTokenId) {
+        new ErrorAlert({
+          title: "Error",
+          message: [
+            "This metadata is already used by token ",
+            el("a", `#${result.duplicatedTokenId} `, new OpenInNewIcon(), {
+              href:
+                `https://opensea.io/assets/ethereum/0x134590acb661da2b318bcde6b39ef5cf8208e372/${result.duplicatedTokenId}`,
+              target: "_blank",
+            }),
+          ],
+        });
+        return;
+      }
+
       const blob = await GodImageConstructor.constructImage(
         this.nftAttributeForm.metadata,
       );
@@ -136,10 +162,7 @@ export default class GodDetailView extends View<Data> {
       const formData = new FormData();
       formData.append("file", blob);
       formData.append("tokenId", this.tokenId.toString());
-      formData.append(
-        "metadata",
-        JSON.stringify(this.nftAttributeForm.metadata),
-      );
+      formData.append("metadata", JSON.stringify(metadata));
 
       await AppConfig.supabaseConnector.callEdgeFunction(
         "set-god-metadata",
