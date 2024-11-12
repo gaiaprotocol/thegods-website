@@ -1,4 +1,5 @@
 import { DomNode } from "@common-module/app";
+import { GodMetadata } from "@gaiaprotocol/thegods";
 import PartListItem from "./PartListItem.js";
 
 export default class PartList<T = string> extends DomNode<HTMLDivElement, {
@@ -7,12 +8,7 @@ export default class PartList<T = string> extends DomNode<HTMLDivElement, {
   public children: PartListItem<T>[] = [];
   public selected: PartListItem<T> | undefined;
 
-  constructor(metadatas: {
-    value: T;
-    type: string;
-    gender: string;
-    parts: Record<string, string>;
-  }[]) {
+  constructor(metadatas: ({ value: T } & GodMetadata)[]) {
     super(".part-list");
     for (const metadata of metadatas) {
       const item = new PartListItem(metadata.value, metadata).appendTo(this);

@@ -1,16 +1,13 @@
-import { GodMetadata, PartSelector } from "@gaiaprotocol/thegods";
+import { GodMetadata, ImageInfo, PartSelector } from "@gaiaprotocol/thegods";
 
 class GodImageConstructor {
   public async constructImage(metadata: GodMetadata): Promise<Blob> {
     const selectedParts = PartSelector.getSelectedParts(metadata);
 
-    let images: any[] = [];
-
-    for (const selectedPart of selectedParts) {
-      const imagesToAdd = selectedPart.part.images || [];
-      images = images.concat(imagesToAdd);
+    const images: ImageInfo[] = [];
+    for (const part of Object.values(selectedParts)) {
+      images.push(...(part.images || []));
     }
-
     images.sort((a, b) => a.order - b.order);
 
     const BASE_URL = "https://storage.googleapis.com/gaiaprotocol/god_parts";

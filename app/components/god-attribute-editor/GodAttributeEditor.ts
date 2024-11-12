@@ -1,7 +1,12 @@
 import { DomNode } from "@common-module/app";
 import { Accordion, AccordionItem } from "@common-module/app-components";
 import { Debouncer } from "@common-module/ts";
-import { ElementType, GenderType, GodMetadata } from "@gaiaprotocol/thegods";
+import {
+  ElementType,
+  GenderType,
+  GodMetadata,
+  PartSelector,
+} from "@gaiaprotocol/thegods";
 import { OpenSeaMetadataAttribute } from "../../opensea/OpenSeaMetadata.js";
 import GodMetadataUtils from "../../utils/GodMetadataUtils.js";
 import fireManParts from "../parts-jsons/fire-man-parts.json" with {
@@ -91,12 +96,8 @@ export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
     const options = types.map((type) => ({
       value: type,
       type,
-      gender: "Man",
-      parts: {
-        Background:
-          PARTS_DATA[type].Man.find((part: any) => part.name === "Background")
-            ?.parts[0]?.name || "",
-      },
+      gender: "Man" as GenderType,
+      parts: PartSelector.getDefaultParts(type, "Man"),
     }));
     return new PartList(options);
   }
