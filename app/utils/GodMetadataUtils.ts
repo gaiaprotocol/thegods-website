@@ -1,4 +1,4 @@
-import GodMetadata from "../entities/GodMetadata.js";
+import { ElementType, GenderType, GodMetadata } from "@gaiaprotocol/thegods";
 import { OpenSeaMetadataAttribute } from "../opensea/OpenSeaMetadata.js";
 
 class GodMetadataUtils {
@@ -25,8 +25,10 @@ class GodMetadataUtils {
     attributes: OpenSeaMetadataAttribute[],
   ): GodMetadata {
     const metadata: GodMetadata = {
-      type: attributes.find((a) => a.trait_type === "Type")!.value,
-      gender: attributes.find((a) => a.trait_type === "Gender")!.value,
+      type: attributes.find((a) => a.trait_type === "Type")!
+        .value as ElementType,
+      gender: attributes.find((a) => a.trait_type === "Gender")!
+        .value as GenderType,
       parts: Object.fromEntries(
         attributes
           .filter((a) => a.trait_type !== "Type" && a.trait_type !== "Gender")

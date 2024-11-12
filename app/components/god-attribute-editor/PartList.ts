@@ -1,28 +1,28 @@
 import { DomNode } from "@common-module/app";
 import PartListItem from "./PartListItem.js";
 
-export default class PartList extends DomNode<HTMLDivElement, {
-  select: (value: string) => void;
+export default class PartList<T = string> extends DomNode<HTMLDivElement, {
+  select: (value: T) => void;
 }> {
-  public children: PartListItem[] = [];
-  public selected: PartListItem | undefined;
+  public children: PartListItem<T>[] = [];
+  public selected: PartListItem<T> | undefined;
 
   constructor(metadatas: {
-    name: string;
+    value: T;
     type: string;
     gender: string;
     parts: Record<string, string>;
   }[]) {
     super(".part-list");
     for (const metadata of metadatas) {
-      const item = new PartListItem(metadata.name, metadata).appendTo(this);
-      item.onDom("click", () => this.select(metadata.name));
+      const item = new PartListItem(metadata.value, metadata).appendTo(this);
+      item.onDom("click", () => this.select(metadata.value));
     }
   }
 
-  public select(value: string) {
+  public select(value: T) {
     this.selected?.deselect();
-    this.selected = this.children.find((c) => c.name === value);
+    this.selected = this.children.find((c) => c.value === value);
     this.selected?.select();
     this.emit("select", value);
     return this;

@@ -55,7 +55,9 @@ class AppConfig implements IAppConfig {
       const name = await GaiaNameRepository.fetchName(walletAddress);
       return {
         id: walletAddress,
-        name: name ? name : AddressUtils.shortenAddress(walletAddress),
+        name: name
+          ? `${name}.gaia`
+          : AddressUtils.shortenAddress(walletAddress),
         isFallback: true,
       };
     };

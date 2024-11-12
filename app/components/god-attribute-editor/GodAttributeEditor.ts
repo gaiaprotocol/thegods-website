@@ -1,10 +1,9 @@
 import { DomNode } from "@common-module/app";
 import { Accordion, AccordionItem } from "@common-module/app-components";
 import { Debouncer } from "@common-module/ts";
-import GodMetadata from "../../entities/GodMetadata.js";
+import { ElementType, GenderType, GodMetadata } from "@gaiaprotocol/thegods";
 import { OpenSeaMetadataAttribute } from "../../opensea/OpenSeaMetadata.js";
 import GodMetadataUtils from "../../utils/GodMetadataUtils.js";
-import PartList from "./PartList.js";
 import fireManParts from "../parts-jsons/fire-man-parts.json" with {
   type: "json",
 };
@@ -23,6 +22,7 @@ import waterManParts from "../parts-jsons/water-man-parts.json" with {
 import waterWomanParts from "../parts-jsons/water-woman-parts.json" with {
   type: "json",
 };
+import PartList from "./PartList.js";
 
 const PARTS_DATA: Record<string, Record<string, any>> = {
   Stone: {
@@ -48,7 +48,7 @@ export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
 
   private accordion!: Accordion;
   private typeAccordionItem!: AccordionItem;
-  private typeSelector!: PartList;
+  private typeSelector!: PartList<ElementType>;
   private genderAccordionItem?: AccordionItem;
 
   private readonly metadataChangeDebouncer = new Debouncer(100, () => {
@@ -86,10 +86,10 @@ export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
     return this._attributes;
   }
 
-  private createTypeSelector(): PartList {
-    const types = Object.keys(PARTS_DATA);
+  private createTypeSelector(): PartList<ElementType> {
+    const types: ElementType[] = ["Stone", "Fire", "Water"];
     const options = types.map((type) => ({
-      name: type,
+      value: type,
       type,
       gender: "Man",
       parts: {
@@ -120,8 +120,8 @@ export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
     genderSelector.select(this.metadata.gender);
   }
 
-  private createGenderPartList(): PartList {
-    const genders = ["Man", "Woman"];
+  private createGenderPartList(): PartList<GenderType> {
+    const genders: GenderType[] = ["Man", "Woman"];
     const options = genders.map((gender) => {
       const partsData = PARTS_DATA[this.metadata.type][gender];
       const defaultParts = partsData.reduce((acc: any, part: any) => {
@@ -129,7 +129,7 @@ export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
         return acc;
       }, {});
       return {
-        name: gender,
+        value: gender,
         type: this.metadata.type,
         gender,
         parts: defaultParts,
@@ -155,7 +155,7 @@ export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
 
     partsData.forEach((part: any) => {
       const partSelector = new PartList(part.parts.map((p: any) => ({
-        name: p.name,
+        value: p.name,
         type: this.metadata.type,
         gender: this.metadata.gender,
         parts: {

@@ -2,28 +2,28 @@ import { DomNode, el } from "@common-module/app";
 import { GameScreen, Sprite } from "@gaiaengine/dom";
 import CheckIcon from "../../icons/CheckIcon.js";
 import fireManParts from "../parts-jsons/fire-man-parts.json" with {
-  type: "json",
+  type: "json"
 };
 import fireWomanParts from "../parts-jsons/fire-woman-parts.json" with {
-  type: "json",
+  type: "json"
 };
 import stoneManParts from "../parts-jsons/stone-man-parts.json" with {
-  type: "json",
+  type: "json"
 };
 import stoneWomanParts from "../parts-jsons/stone-woman-parts.json" with {
-  type: "json",
+  type: "json"
 };
 import waterManParts from "../parts-jsons/water-man-parts.json" with {
-  type: "json",
+  type: "json"
 };
 import waterWomanParts from "../parts-jsons/water-woman-parts.json" with {
-  type: "json",
+  type: "json"
 };
 import keyToSpritesheet from "./spritesheet/key-to-spritesheet.json" with {
-  type: "json",
+  type: "json"
 };
 import spritesheet from "./spritesheet/spritesheet.json" with {
-  type: "json",
+  type: "json"
 };
 
 enum GodGender {
@@ -37,11 +37,11 @@ enum GodType {
   WATER = "Water",
 }
 
-export default class PartListItem extends DomNode {
+export default class PartListItem<T> extends DomNode {
   private gameScreen: GameScreen;
   private checkIconContainer: DomNode;
 
-  constructor(public name: string, metadata: {
+  constructor(public value: T, metadata: {
     type: string;
     gender: string;
     parts: Record<string, string>;
@@ -49,7 +49,7 @@ export default class PartListItem extends DomNode {
     super("a.part-list-item");
 
     this.append(
-      el(".name", name),
+      el(".value", value as string),
       this.checkIconContainer = el(".check-icon-container"),
     );
 
