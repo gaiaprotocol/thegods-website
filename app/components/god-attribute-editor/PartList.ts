@@ -8,11 +8,16 @@ export default class PartList<T = string> extends DomNode<HTMLDivElement, {
   public children: PartListItem<T>[] = [];
   public selected: PartListItem<T> | undefined;
 
-  constructor(metadatas: ({ value: T } & GodMetadata)[]) {
+  constructor(dataSet: ({ value: T } & GodMetadata)[]) {
     super(".part-list");
-    for (const metadata of metadatas) {
-      const item = new PartListItem(metadata.value, metadata).appendTo(this);
-      item.onDom("click", () => this.select(metadata.value));
+    this.data = dataSet;
+  }
+
+  public set data(dataSet: ({ value: T } & GodMetadata)[]) {
+    this.clear();
+    for (const data of dataSet) {
+      const item = new PartListItem(data.value, data).appendTo(this);
+      item.onDom("click", () => this.select(data.value));
     }
   }
 

@@ -957,7 +957,7 @@ li.chat-message-list-item > main {
   position: relative;
   aspect-ratio: 1;
 }
-.god-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .name {
+.god-attribute-editor .accordion-item > .content > .part-list > .part-list-item > .value {
   position: absolute;
   left: 12px;
   bottom: 12px;

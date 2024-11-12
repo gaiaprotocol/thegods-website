@@ -99,47 +99,65 @@ export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
     return new PartList(options);
   }
 
+  private isUpdatingPartSelectors = false;
+
   private createPartSelectors() {
+    if (this.isUpdatingPartSelectors) return;
+    this.isUpdatingPartSelectors = true;
+
     this.accordion.clear(this.typeAccordionItem, this.genderAccordionItem);
 
-    const partsData = PartSelector.getTraits(
+    const traits = PartSelector.getTraits(
       this.metadata.type,
       this.metadata.gender,
     );
 
-    this.metadata.parts = this.metadata.parts || {};
-    partsData.forEach((part: any) => {
-      if (
-        !this.metadata.parts[part.name] ||
-        !part.parts.some((p: any) => p.name === this.metadata.parts[part.name])
-      ) {
-        this.metadata.parts[part.name] = part.parts[0].name;
-      }
-    });
+    traits.forEach((trait) => {
+      const availableParts = PartSelector.getAvailablePartsForTrait(
+        trait,
+        this.metadata,
+      );
 
-    partsData.forEach((part: any) => {
-      const partSelector = new PartList(part.parts.map((p: any) => ({
-        value: p.name,
-        type: this.metadata.type,
-        gender: this.metadata.gender,
-        parts: {
-          ...this.metadata.parts,
-          [part.name]: p.name,
-        },
-      })));
+      if (availableParts.length === 0) {
+        delete this.metadata.parts[trait.name];
+        return;
+      }
+
+      // Ensure the selected part is available; otherwise, select the default
+      if (
+        !this.metadata.parts[trait.name] ||
+        !availableParts.some((p) => p.name === this.metadata.parts[trait.name])
+      ) {
+        this.metadata.parts[trait.name] = availableParts[0].name;
+      }
+
+      const partSelector = new PartList(
+        availableParts.map((p) => ({
+          value: p.name,
+          type: this.metadata.type,
+          gender: this.metadata.gender,
+          parts: {
+            ...this.metadata.parts,
+            [trait.name]: p.name,
+          },
+        })),
+      );
 
       const partAccordionItem = new AccordionItem({
-        label: part.name,
+        label: trait.name,
         open: true,
       }, partSelector);
       this.accordion.append(partAccordionItem);
 
       partSelector.on("select", (selectedPartName) => {
-        this.metadata.parts[part.name] = selectedPartName;
+        this.metadata.parts[trait.name] = selectedPartName;
         this.metadataChangeDebouncer.execute();
+        this.createPartSelectors();
       });
 
-      partSelector.select(this.metadata.parts[part.name]);
+      partSelector.select(this.metadata.parts[trait.name]);
     });
+
+    this.isUpdatingPartSelectors = false;
   }
 }

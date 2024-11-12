@@ -1,0 +1,40 @@
+{
+  "version": "4",
+  "remote": {
+    "https://raw.githubusercontent.com/yjgaia/deno-module/refs/heads/main/page.ts": "7adf691efb54ae7d55daba4af36ae0701b0e2a1ed34c6d119baadd848775bfec",
+    "https://raw.githubusercontent.com/yjgaia/universal-page-module/refs/heads/main/deno/mod.ts": "5cfdb206a700d017ee7fc6934106ad09207374f0a06141ff112fb3749d705811",
+    "https://raw.githubusercontent.com/yjgaia/universal-page-module/refs/heads/main/lib/DomSelector.js": "b5ab264a2364282899fa329003e943c6884d85ce48f74e9883f1e1706b198652",
+    "https://raw.githubusercontent.com/yjgaia/universal-page-module/refs/heads/main/lib/ElementOrSelector.js": "025ebb30b7bdc1fcb7154f2331b2689067645b8e9930eb4978cecbee777c6569",
+    "https://raw.githubusercontent.com/yjgaia/universal-page-module/refs/heads/main/lib/ElementProperties.js": "d930134896bc692a6eab340b7228c6149ec808907535aecf9dceeae019a26624",
+    "https://raw.githubusercontent.com/yjgaia/universal-page-module/refs/heads/main/lib/InferElementType.js": "7b80b774cf8e36148748d8cd385b152ff78b9c336e18c6f515e3593e8aedc811",
+    "https://raw.githubusercontent.com/yjgaia/universal-page-module/refs/heads/main/lib/InferElementTypeByTag.js": "32850f03d85fa7ae3e6bc2b3571db828403da12aff0594ed5ea4893b3c33faf2",
+    "https://raw.githubusercontent.com/yjgaia/universal-page-module/refs/heads/main/lib/Tag.js": "2620018a0f8dc3ea062d6a3fc1dfcf8b643c21867c3ebb80ce5712d0511587bd",
+    "https://raw.githubusercontent.com/yjgaia/universal-page-module/refs/heads/main/lib/el.js": "b45142907b58c3ac84cc0a9270c317cc6dbc4db6c4d18512f634f37bf0928093",
+    "https://raw.githubusercontent.com/yjgaia/universal-page-module/refs/heads/main/lib/html.js": "1efe6ad280e951edf06c1fbcead47c34e5cd8101b5c4bf8f09d3d3fc678374ef"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@common-module/material-loading-spinner@0.1.6",
+        "npm:@gaiaengine/2d-spine@~0.1.6",
+        "npm:@gaiaengine/2d@~0.1.6",
+        "npm:@gaiaengine/dom@^0.0.2",
+        "npm:@gaiaprotocol/thegods@^0.0.1",
+        "npm:@types/node@^22.7.5",
+        "npm:@types/webpack@^5.28.5",
+        "npm:css-loader@^7.1.2",
+        "npm:gaiaprotocol@~0.1.6",
+        "npm:less-loader@^12.2.0",
+        "npm:less@^4.2.0",
+        "npm:mini-css-extract-plugin@^2.9.1",
+        "npm:react@^18.3.1",
+        "npm:ts-loader@^9.5.1",
+        "npm:ts-node@^10.9.2",
+        "npm:typescript@^5.6.3",
+        "npm:webpack-cli@^5.1.4",
+        "npm:webpack@^5.95.0",
+        "npm:yaml-loader@~0.8.1"
+      ]
+    }
+  }
+}

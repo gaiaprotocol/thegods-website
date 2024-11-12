@@ -1,4 +1,4 @@
-import { el } from "https://raw.githubusercontent.com/yjgaia/deno-module/main/page.ts";
+import { el } from "https://raw.githubusercontent.com/yjgaia/deno-module/refs/heads/main/page.ts";
 import getGaiaProtocolLogo from "../components/getGaiaProtocolLogo.ts";
 
 export function header() {
