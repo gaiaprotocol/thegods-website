@@ -2,25 +2,9 @@ import { DomNode } from "@common-module/app";
 import { MaterialLoadingSpinner } from "@common-module/material-loading-spinner";
 import { GameScreen, LetterboxedScreen } from "@gaiaengine/2d";
 import { Spine } from "@gaiaengine/2d-spine";
+import { PartSelector } from "@gaiaprotocol/thegods";
 import OpenSeaMetadata from "../opensea/OpenSeaMetadata.js";
-import fireManParts from "./parts-jsons/fire-man-parts.json" with {
-  type: "json",
-};
-import fireWomanParts from "./parts-jsons/fire-woman-parts.json" with {
-  type: "json",
-};
-import stoneManParts from "./parts-jsons/stone-man-parts.json" with {
-  type: "json",
-};
-import stoneWomanParts from "./parts-jsons/stone-woman-parts.json" with {
-  type: "json",
-};
-import waterManParts from "./parts-jsons/water-man-parts.json" with {
-  type: "json",
-};
-import waterWomanParts from "./parts-jsons/water-woman-parts.json" with {
-  type: "json",
-};
+import GodMetadataUtils from "../utils/GodMetadataUtils.js";
 
 enum GodGender {
   MAN = "Man",
@@ -92,65 +76,26 @@ export default class GodViewer extends DomNode<HTMLDivElement, {
     const data: OpenSeaMetadata | undefined = await response.json();
 
     if (data) {
-      const type = data.attributes.find((a) => a.trait_type === "Type")!.value;
-      const gender = data.attributes.find((a) =>
-        a.trait_type === "Gender"
-      )!.value;
-      const genderLowerCase = gender.toLowerCase();
-
-      let parts: any;
-      if (type === GodType.STONE && gender === GodGender.MAN) {
-        parts = stoneManParts;
-      } else if (type === GodType.STONE && gender === GodGender.WOMAN) {
-        parts = stoneWomanParts;
-      } else if (type === GodType.FIRE && gender === GodGender.MAN) {
-        parts = fireManParts;
-      } else if (type === GodType.FIRE && gender === GodGender.WOMAN) {
-        parts = fireWomanParts;
-      } else if (type === GodType.WATER && gender === GodGender.MAN) {
-        parts = waterManParts;
-      } else if (type === GodType.WATER && gender === GodGender.WOMAN) {
-        parts = waterWomanParts;
-      }
-
-      const metadataParts: Record<string, string> = {};
-      for (const attribute of data.attributes) {
-        if (
-          attribute.trait_type !== "Gender" && attribute.trait_type !== "Type"
-        ) {
-          metadataParts[attribute.trait_type] = attribute.value;
-        }
-      }
+      const metadata = GodMetadataUtils.convertAttributesToMetadata(
+        data.attributes,
+      );
+      const selectedParts = PartSelector.getSelectedParts(metadata);
 
       const skins: string[] = [];
 
-      for (const trait of parts) {
-        if (
-          !trait.condition ||
-          trait.condition.values.includes(metadataParts[trait.condition.trait])
-        ) {
-          for (const part of trait.parts) {
-            if (
-              !part.condition ||
-              part.condition.values.includes(
-                metadataParts[part.condition.trait],
-              )
-            ) {
-              if (metadataParts[trait.name] === part.name) {
-                skins.push(`${trait.name}/${part.name}`);
-                break;
-              }
-            }
-          }
-        }
+      for (const [traitName, part] of Object.entries(selectedParts)) {
+        skins.push(`${traitName}/${part.name}`);
       }
 
-      const path = `/spine-files/god-${type.toLowerCase()}-${genderLowerCase}`;
+      const typeLowerCase = metadata.type.toLowerCase();
+      const genderLowerCase = metadata.gender.toLowerCase();
+
+      const path = `/spine-files/god-${typeLowerCase}-${genderLowerCase}`;
 
       this.spineObject = new Spine(0, 0, {
         json: `${path}.json`,
         atlas: `${path}.atlas`,
-        png: type === "Water"
+        png: metadata.type === "Water"
           ? {
             [`water-${genderLowerCase}.png`]: `${path}.png`,
             [`water-${genderLowerCase}_2.png`]: `${path}-2.png`,

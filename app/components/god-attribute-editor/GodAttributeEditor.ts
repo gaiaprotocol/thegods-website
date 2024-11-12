@@ -9,40 +9,7 @@ import {
 } from "@gaiaprotocol/thegods";
 import { OpenSeaMetadataAttribute } from "../../opensea/OpenSeaMetadata.js";
 import GodMetadataUtils from "../../utils/GodMetadataUtils.js";
-import fireManParts from "../parts-jsons/fire-man-parts.json" with {
-  type: "json",
-};
-import fireWomanParts from "../parts-jsons/fire-woman-parts.json" with {
-  type: "json",
-};
-import stoneManParts from "../parts-jsons/stone-man-parts.json" with {
-  type: "json",
-};
-import stoneWomanParts from "../parts-jsons/stone-woman-parts.json" with {
-  type: "json",
-};
-import waterManParts from "../parts-jsons/water-man-parts.json" with {
-  type: "json",
-};
-import waterWomanParts from "../parts-jsons/water-woman-parts.json" with {
-  type: "json",
-};
 import PartList from "./PartList.js";
-
-const PARTS_DATA: Record<string, Record<string, any>> = {
-  Stone: {
-    Man: stoneManParts,
-    Woman: stoneWomanParts,
-  },
-  Fire: {
-    Man: fireManParts,
-    Woman: fireWomanParts,
-  },
-  Water: {
-    Man: waterManParts,
-    Woman: waterWomanParts,
-  },
-};
 
 export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
   metadataChanged: (metadata: GodMetadata) => void;
@@ -123,26 +90,22 @@ export default class GodAttributeEditor extends DomNode<HTMLDivElement, {
 
   private createGenderPartList(): PartList<GenderType> {
     const genders: GenderType[] = ["Man", "Woman"];
-    const options = genders.map((gender) => {
-      const partsData = PARTS_DATA[this.metadata.type][gender];
-      const defaultParts = partsData.reduce((acc: any, part: any) => {
-        acc[part.name] = part.parts[0].name;
-        return acc;
-      }, {});
-      return {
-        value: gender,
-        type: this.metadata.type,
-        gender,
-        parts: defaultParts,
-      };
-    });
+    const options = genders.map((gender) => ({
+      value: gender,
+      type: this.metadata.type,
+      gender,
+      parts: PartSelector.getDefaultParts(this.metadata.type, gender),
+    }));
     return new PartList(options);
   }
 
   private createPartSelectors() {
     this.accordion.clear(this.typeAccordionItem, this.genderAccordionItem);
 
-    const partsData = PARTS_DATA[this.metadata.type][this.metadata.gender];
+    const partsData = PartSelector.getTraits(
+      this.metadata.type,
+      this.metadata.gender,
+    );
 
     this.metadata.parts = this.metadata.parts || {};
     partsData.forEach((part: any) => {

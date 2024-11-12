@@ -66,35 +66,21 @@ export default class GodDisplay extends DomNode {
 
     const skins: string[] = [];
 
-    for (const part of Object.values(selectedParts)) {
-      if (
-        !part.condition ||
-        part.condition.values.includes(metadataParts[part.condition.trait])
-      ) {
-        for (const part of part.parts) {
-          if (
-            !part.condition ||
-            part.condition.values.includes(
-              metadataParts[part.condition.trait],
-            )
-          ) {
-            if (metadataParts[part.name] === part.name) {
-              skins.push(`${part.name}/${part.name}`);
-              break;
-            }
-          }
-        }
-      }
+    for (const [traitName, part] of Object.entries(selectedParts)) {
+      skins.push(`${traitName}/${part.name}`);
     }
 
-    const path = `/spine-files/god-${type.toLowerCase()}-${genderLowerCase}`;
+    const typeLowerCase = metadata.type.toLowerCase();
+    const genderLowerCase = metadata.gender.toLowerCase();
+
+    const path = `/spine-files/god-${typeLowerCase}-${genderLowerCase}`;
 
     const loading = new MaterialLoadingSpinner().appendTo(this);
 
     this.spineObject = new Spine(0, 0, {
       json: `${path}.json`,
       atlas: `${path}.atlas`,
-      png: type === "Water"
+      png: metadata.type === "Water"
         ? {
           [`water-${genderLowerCase}.png`]: `${path}.png`,
           [`water-${genderLowerCase}_2.png`]: `${path}-2.png`,
