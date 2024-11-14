@@ -1,7 +1,7 @@
 import { DomNode, el } from "@common-module/app";
 import { GameScreen, Sprite } from "@gaiaengine/dom";
+import { CheckIcon } from "@gaiaprotocol/svg-icons";
 import { GodMetadata, PartSelector } from "@gaiaprotocol/thegods";
-import CheckIcon from "../../icons/CheckIcon.js";
 import keyToSpritesheet from "./spritesheet/key-to-spritesheet.json" with {
   type: "json",
 };

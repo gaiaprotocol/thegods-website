@@ -3,16 +3,16 @@ import {
   AppCompConfig,
   Button,
   ButtonType,
-  Confirm,
-  ErrorAlert,
+  ConfirmDialog,
+  ErrorDialog,
 } from "@common-module/app-components";
 import { ObjectUtils } from "@common-module/ts";
+import { OpenInNewIcon } from "@gaiaprotocol/svg-icons";
 import { godDetailView } from "../../pages/godDetailView.js";
 import AppConfig from "../AppConfig.js";
 import GodAttributeEditor from "../components/god-attribute-editor/GodAttributeEditor.js";
 import GodImageConstructor from "../components/god-attribute-editor/GodImageConstructor.js";
 import GodDisplay from "../components/GodDisplay.js";
-import OpenInNewIcon from "../icons/OpenInNewIcon.js";
 import OpenSeaMetadata, {
   OpenSeaMetadataAttribute,
 } from "../opensea/OpenSeaMetadata.js";
@@ -71,7 +71,7 @@ export default class GodDetailView extends View<Data> {
               title: "Reset",
               disabled: true,
               onClick: () => {
-                new Confirm({
+                new ConfirmDialog({
                   title: "Reset Attributes",
                   message: "Are you sure you want to reset the attributes?",
                   onConfirm: () => {
@@ -91,7 +91,7 @@ export default class GodDetailView extends View<Data> {
               title: "Save Changes",
               disabled: true,
               onClick: async () => {
-                await new Confirm({
+                await new ConfirmDialog({
                   title: "Save Changes",
                   message: "Are you sure you want to save the changes?",
                   onConfirm: () => this.saveChanges(),
@@ -141,7 +141,7 @@ export default class GodDetailView extends View<Data> {
       );
 
       if (result.duplicatedTokenId) {
-        new ErrorAlert({
+        new ErrorDialog({
           title: "Error",
           message: [
             "This metadata is already used by token ",
