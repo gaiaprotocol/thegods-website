@@ -78,12 +78,14 @@
     "legacy",
     "public",
     "server",
-    "utils"
+    "utils",
+    "./webpack.config.dev.ts",
+    "./webpack.config.prod.ts",
   ],
   "ts-node": {
     "transpileOnly": true,
     "moduleTypes": {
-      "webpack.config.ts": "cjs",
+      "webpack.config.dev.ts": "cjs",
       "webpack.config.prod.ts": "cjs",
     }
   }
