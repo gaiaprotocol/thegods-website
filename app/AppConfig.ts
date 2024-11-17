@@ -6,8 +6,10 @@ import {
 import { SocialCompConfig } from "@common-module/social-components";
 import { AuthTokenManager, SupabaseConnector } from "@common-module/supabase";
 import { AddressUtils } from "@common-module/wallet";
+import { WalletLoginConfig } from "@common-module/wallet-login";
 import { NFTIcon } from "@gaiaprotocol/svg-icons";
 import { GaiaUIPreset } from "@gaiaprotocol/ui-preset";
+import { mainnet } from "@wagmi/core/chains";
 import { GaiaProtocolConfig } from "gaiaprotocol";
 import GaiaNameRepository from "./repositories/GaiaNameRepository.js";
 
@@ -16,9 +18,11 @@ export interface IAppConfig {
 
   supabaseUrl: string;
   supabaseKey: string;
+
+  walletConnectProjectId: string;
 }
 
-class AppConfig implements IAppConfig {
+class AppConfig {
   public isDevMode!: boolean;
 
   public supabaseUrl!: string;
@@ -37,6 +41,12 @@ class AppConfig implements IAppConfig {
       config.supabaseKey,
       authTokenManager,
     );
+
+    WalletLoginConfig.init({
+      chains: [mainnet] as any,
+      walletConnectProjectId: config.walletConnectProjectId,
+      supabaseConnector: this.supabaseConnector,
+    });
 
     GaiaNameRepository.supabaseConnector = this.supabaseConnector;
 

@@ -1,5 +1,5 @@
 import { Router, SPAInitializer } from "@common-module/app";
-import { UniversalWalletConnector } from "@common-module/wallet";
+import { WalletLoginManager } from "@common-module/wallet-login";
 import AppConfig, { IAppConfig } from "./AppConfig.js";
 import GodDetailView from "./views/GodDetailView.js";
 import IntroView from "./views/IntroView.js";
@@ -10,22 +10,7 @@ import NFTViewerView from "./views/NFTViewerView.js";
 export default async function init(config: IAppConfig) {
   AppConfig.init(config);
   SPAInitializer.init();
-
-  UniversalWalletConnector.init({
-    name: "The Gods NFT",
-    icon: "https://names.gaia.cc/images/icon-192x192.png",
-    description: "Gaia Protocol's Membership NFT",
-    walletConnectProjectId: "7538ca3cec20504b06a3338d0e53b028",
-    chains: {
-      "base-sepolia": {
-        id: 84532,
-        name: "Base Sepolia Testnet",
-        symbol: "ETH",
-        rpc: "https://sepolia.base.org",
-        explorerUrl: "https://sepolia.basescan.org",
-      },
-    },
-  });
+  WalletLoginManager.init();
 
   Router
     .add("/", IntroView)

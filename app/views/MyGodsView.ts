@@ -18,7 +18,7 @@ export default class MyGodsView extends View {
 
     this.header = new QueriedDomNode(".my-gods-view header");
 
-    if (WalletLoginManager.isLoggedIn) {
+    if (WalletLoginManager.isLoggedIn()) {
       this.loadGods();
     } else {
       Router.goWithoutHistory("/");

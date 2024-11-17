@@ -172,8 +172,21 @@ button.contained .material-loading-spinner > svg > circle {
   --link-underline-color: #616161;
   --selection-bg-color: #fff;
   --selection-text-color: #000;
+  /* App Components */
   --overlay-color: rgba(34, 34, 34, 0.6);
   --modal-bg-color: #171717;
+  --success-alert-bg-color: #0c130d;
+  --success-alert-icon-color: #66bb6a;
+  --success-alert-text-color: #cce8cd;
+  --info-alert-bg-color: #071318;
+  --info-alert-icon-color: #29b6f6;
+  --info-alert-text-color: #b8e7fb;
+  --warning-alert-bg-color: #191207;
+  --warning-alert-icon-color: #ffa726;
+  --warning-alert-text-color: #ffe2b7;
+  --error-alert-bg-color: #160b0b;
+  --error-alert-icon-color: #f44336;
+  --error-alert-text-color: #f4c7c7;
   --text-button-text-color: #fff;
   --text-button-hover-bg-color: rgba(255, 255, 255, 0.08);
   --text-button-disabled-text-color: rgba(255, 255, 255, 0.26);
@@ -201,9 +214,9 @@ button.contained .material-loading-spinner > svg > circle {
   --dropdown-menu-item-hover-bg-color: #424242;
   --loading-spinner-color: #fff;
   --loading-spinner-on-contained-button-color: #000;
-  --avatar-bg-color: #252527;
   /* Social Components */
   --chat-message-form-bg-color: #2f2f2f;
+  --avatar-bg-color: #252527;
 }
 @keyframes fade-in {
   from {
@@ -228,6 +241,11 @@ button.contained .material-loading-spinner > svg > circle {
 }
 :root {
   background-color: var(--page-bg-color);
+}
+html,
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 body {
   color: var(--paragraph-text-color);
@@ -271,6 +289,20 @@ dialog {
   color: var(--selection-text-color);
 }
 /* App Components */
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 22px;
+  border-radius: 4.5px;
+}
+.alert.info {
+  background-color: var(--info-alert-bg-color);
+  color: var(--info-alert-text-color);
+}
+.alert.info > .icon-container {
+  color: var(--info-alert-icon-color);
+}
 button,
 a.button {
   display: flex;
@@ -557,6 +589,24 @@ a.button.circle.disabled {
 .dropdown-menu-item:hover {
   background-color: var(--dropdown-menu-item-hover-bg-color);
 }
+.non-modal-dialog-container:has(*) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  backdrop-filter: blur(50px);
+  background-color: var(--overlay-color);
+  animation: fade-in 0.3s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.non-modal-dialog-container:has(*) > dialog {
+  margin: 21px auto;
+  max-height: calc(100% - 42px);
+}
 dialog.modal {
   width: 90%;
   max-width: 600px;
@@ -612,7 +662,7 @@ dialog.modal.structured-modal > footer {
     padding: 24px;
   }
 }
-dialog.modal.alert > header > h1 {
+dialog.modal.alert-dialog > header > h1 {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -629,6 +679,12 @@ dialog.modal.alert > header > h1 {
 }
 .accordion-item > .content {
   padding-bottom: 15px;
+}
+.icon.svg {
+  display: flex;
+  align-items: center;
+  width: 24px;
+  height: 24px;
 }
 /* Social Components */
 .author-name-display {
@@ -732,7 +788,7 @@ li.chat-message-list-item > main {
 .logged-in-user-avatar-button > button.avatar > .icon-container {
   border-radius: 50%;
 }
-.logged-in-user-avatar-button > button.avatar > .name {
+.logged-in-user-avatar-button > button.avatar > .title {
   padding-right: 16px;
 }
 @media (pointer: fine) {
@@ -762,41 +818,16 @@ li.chat-message-list-item > main {
   display: flex;
   align-items: center;
 }
-.wallet-connection-content {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+.non-modal-dialog-container:has(.wallet-connection-modal),
+.non-modal-dialog-container:has(.wallet-login-modal) {
+  z-index: 99997;
 }
-.wallet-connection-content > section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.wallet-connection-modal,
+.wallet-login-modal {
+  max-width: 480px !important;
 }
-.wallet-connection-content > section > h2 {
-  font-size: 22px;
-}
-@container (width <= 520px) {
-  .wallet-connection-content > section > h2 {
-    font-size: 18px;
-  }
-}
-.wallet-login-content {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-.wallet-login-content > section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.wallet-login-content > section > h2 {
-  font-size: 22px;
-}
-@container (width <= 520px) {
-  .wallet-login-content > section > h2 {
-    font-size: 18px;
-  }
+.confirm-dialog.sign-message .alert.info {
+  margin-top: 22px;
 }
 /* Gaia Components */
 .persona-avatar {
