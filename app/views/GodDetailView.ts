@@ -7,12 +7,14 @@ import {
   ErrorDialog,
 } from "@common-module/app-components";
 import { ObjectUtils } from "@common-module/ts";
+import { WalletSessionManager } from "@common-module/wallet";
 import { OpenInNewIcon } from "@gaiaprotocol/svg-icons";
 import { godDetailView } from "../../pages/godDetailView.js";
 import AppConfig from "../AppConfig.js";
 import GodAttributeEditor from "../components/god-attribute-editor/GodAttributeEditor.js";
 import GodImageConstructor from "../components/god-attribute-editor/GodImageConstructor.js";
 import GodDisplay from "../components/GodDisplay.js";
+import GaiaProtocolGodsContract from "../contracts/GaiaProtocolGodsContract.js";
 import OpenSeaMetadata, {
   OpenSeaMetadataAttribute,
 } from "../opensea/OpenSeaMetadata.js";
@@ -57,70 +59,79 @@ export default class GodDetailView extends View<Data> {
     if (attributes) {
       this.originalAttributes = attributes;
 
-      this.container.append(
-        el(
-          ".form-container",
+      if (
+        await GaiaProtocolGodsContract.ownerOf(BigInt(this.tokenId)) !==
+          WalletSessionManager.getConnectedAddress()
+      ) {
+        this.container.append(
+          this.nftDisplay = new GodDisplay(attributes),
+        );
+      } else {
+        this.container.append(
           el(
-            "main",
-            this.nftDisplay = new GodDisplay(attributes),
-            this.nftAttributeForm = new GodAttributeEditor(attributes),
+            ".form-container",
+            el(
+              "main",
+              this.nftDisplay = new GodDisplay(attributes),
+              this.nftAttributeForm = new GodAttributeEditor(attributes),
+            ),
+            el(
+              ".buttons",
+              this.resetButton = new Button({
+                title: "Reset",
+                disabled: true,
+                onClick: () => {
+                  new ConfirmDialog({
+                    title: "Reset Attributes",
+                    message: "Are you sure you want to reset the attributes?",
+                    onConfirm: () => {
+                      if (this.nftDisplay) {
+                        this.nftDisplay.attributes = this.originalAttributes;
+                      }
+                      if (this.nftAttributeForm) {
+                        this.nftAttributeForm.attributes =
+                          this.originalAttributes;
+                      }
+                    },
+                  });
+                },
+              }),
+              this.saveButton = new Button({
+                type: ButtonType.Contained,
+                title: "Save Changes",
+                disabled: true,
+                onClick: async () => {
+                  await new ConfirmDialog({
+                    title: "Save Changes",
+                    message: "Are you sure you want to save the changes?",
+                    onConfirm: () => this.saveChanges(),
+                  }).waitForConfirmation();
+                },
+              }),
+            ),
           ),
-          el(
-            ".buttons",
-            this.resetButton = new Button({
-              title: "Reset",
-              disabled: true,
-              onClick: () => {
-                new ConfirmDialog({
-                  title: "Reset Attributes",
-                  message: "Are you sure you want to reset the attributes?",
-                  onConfirm: () => {
-                    if (this.nftDisplay) {
-                      this.nftDisplay.attributes = this.originalAttributes;
-                    }
-                    if (this.nftAttributeForm) {
-                      this.nftAttributeForm.attributes =
-                        this.originalAttributes;
-                    }
-                  },
-                });
-              },
-            }),
-            this.saveButton = new Button({
-              type: ButtonType.Contained,
-              title: "Save Changes",
-              disabled: true,
-              onClick: async () => {
-                await new ConfirmDialog({
-                  title: "Save Changes",
-                  message: "Are you sure you want to save the changes?",
-                  onConfirm: () => this.saveChanges(),
-                }).waitForConfirmation();
-              },
-            }),
-          ),
-        ),
-      );
+        );
 
-      this.nftAttributeForm.on("metadataChanged", () => {
-        if (this.nftDisplay && this.nftAttributeForm) {
-          const attributes = GodMetadataUtils.convertMetadataToAttributes(
-            this.nftAttributeForm.metadata,
-          );
+        this.nftAttributeForm.on("metadataChanged", () => {
+          if (this.nftDisplay && this.nftAttributeForm) {
+            const attributes = GodMetadataUtils.convertMetadataToAttributes(
+              this.nftAttributeForm.metadata,
+            );
 
-          if (!ObjectUtils.isEqual(this.originalAttributes, attributes)) {
-            this.resetButton?.enable();
-            this.saveButton?.enable();
-          } else {
-            this.resetButton?.disable();
-            this.saveButton?.disable();
+            if (!ObjectUtils.isEqual(this.originalAttributes, attributes)) {
+              this.resetButton?.enable();
+              this.saveButton?.enable();
+            } else {
+              this.resetButton?.disable();
+              this.saveButton?.disable();
+            }
+
+            if (!ObjectUtils.isEqual(this.nftDisplay.attributes, attributes)) {
+              this.nftDisplay.attributes = attributes;
+            }
           }
-
-          if (!ObjectUtils.isEqual(this.nftDisplay.attributes, attributes)) {
-            this.nftDisplay.attributes = attributes;
-          }
-        }
-      });
+        });
+      }
     } else {
       this.nftDisplay = undefined;
       this.nftAttributeForm = undefined;

@@ -1253,9 +1253,10 @@ li.chat-message-list-item > main {
     font-size: 27px;
   }
 }
-.my-gods-view > .empty {
+.my-gods-view > header > .empty {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 12px;
 }
 .my-gods-view > .skeleton > .skeleton-item {
