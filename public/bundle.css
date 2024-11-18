@@ -1286,7 +1286,17 @@ li.chat-message-list-item > main {
 @container (width <= 520px) {
   .god-detail-view > header > h1 {
     font-size: 27px;
-    margin-bottom: 27px;
+  }
+}
+.god-detail-view > .god-display {
+  width: 50%;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+@container (width <= 520px) {
+  .god-detail-view > .god-display {
+    width: 100%;
   }
 }
 .god-detail-view > .form-container > main {

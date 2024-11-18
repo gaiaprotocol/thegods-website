@@ -17,9 +17,19 @@
       font-size: 36px;
 
       @container (width <=@phone-width) {
-        font-size    : 27px;
-        margin-bottom: 27px;
+        font-size: 27px;
       }
+    }
+  }
+
+  >.god-display {
+    width        : 50%;
+    flex-shrink  : 0;
+    border-radius: 8px;
+    overflow     : hidden;
+
+    @container (width <=@phone-width) {
+      width: 100%;
     }
   }
 
