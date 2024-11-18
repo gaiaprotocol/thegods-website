@@ -303,6 +303,13 @@ dialog {
 .alert.info > .icon-container {
   color: var(--info-alert-icon-color);
 }
+.alert.warning {
+  background-color: var(--warning-alert-bg-color);
+  color: var(--warning-alert-text-color);
+}
+.alert.warning > .icon-container {
+  color: var(--warning-alert-icon-color);
+}
 button,
 a.button {
   display: flex;
@@ -333,14 +340,14 @@ a.button > .icon-container {
 }
 button > .icon-container > .icon,
 a.button > .icon-container > .icon {
-  width: 36px;
-  height: 36px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
 }
 button > .icon-container > .icon > svg,
 a.button > .icon-container > .icon > svg {
-  width: 36px;
-  height: 36px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
 }
 button > .right-icon-container,
@@ -662,6 +669,10 @@ dialog.modal.structured-modal > footer {
     padding: 24px;
   }
 }
+dialog.modal.structured-modal > footer > button > .icon-container {
+  width: 24px;
+  height: 24px;
+}
 dialog.modal.alert-dialog > header > h1 {
   display: flex;
   align-items: center;
@@ -826,8 +837,31 @@ li.chat-message-list-item > main {
 .wallet-login-modal {
   max-width: 480px !important;
 }
+.network-mismatch-modal {
+  max-width: 760px !important;
+}
+.network-mismatch-modal .alert.warning {
+  margin-top: 22px;
+}
+@container (width <= 520px) {
+  .network-mismatch-modal .alert.warning {
+    font-size: 16px;
+  }
+}
+@container (width <= 740px) {
+  .network-mismatch-modal > footer:has( > button:nth-child(3)) {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 12px;
+  }
+}
 .confirm-dialog.sign-message .alert.info {
   margin-top: 22px;
+}
+@container (width <= 520px) {
+  .confirm-dialog.sign-message .alert.info {
+    font-size: 16px;
+  }
 }
 /* Gaia Components */
 .persona-avatar {
