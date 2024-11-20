@@ -34,11 +34,16 @@ export function introView<T>(): T {
         "ul",
         el(
           "li",
+          {
+            style: {
+              backgroundImage: "url('https://common-resources.gaia.cc/covers/thegods.jpg')",
+            },
+          },
           el(
             "video",
             { autoplay: true, loop: true, muted: true, playsInline: true },
             el("source", {
-              src: "https://gaiaprotocol.com/videos/thegods.mp4",
+              src: "https://common-resources.gaia.cc/covers/thegods.mp4",
               type: "video/mp4",
             }),
           ),
@@ -55,7 +60,7 @@ export function introView<T>(): T {
           "li.membership",
           {
             style: {
-              backgroundImage: "url('/images/valhalla.jpg')",
+              backgroundImage: "url('https://common-resources.gaia.cc/covers/valhalla.jpg')",
             },
           },
           el(

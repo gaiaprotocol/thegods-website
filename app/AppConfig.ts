@@ -5,8 +5,8 @@ import {
 } from "@common-module/app-components";
 import { SocialCompConfig } from "@common-module/social-components";
 import { AuthTokenManager, SupabaseConnector } from "@common-module/supabase";
-import { AddressUtils } from "@common-module/wallet";
 import { WalletLoginConfig } from "@common-module/wallet-login";
+import { AddressUtils } from "@common-module/wallet-utils";
 import { NFTIcon } from "@gaiaprotocol/svg-icons";
 import { GaiaUIPreset } from "@gaiaprotocol/ui-preset";
 import { mainnet } from "@wagmi/core/chains";
