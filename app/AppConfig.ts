@@ -64,7 +64,6 @@ class AppConfig {
         name: name
           ? `${name}.gaia`
           : AddressUtils.shortenAddress(walletAddress),
-        isFallback: true,
       };
     };
 
