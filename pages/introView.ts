@@ -36,7 +36,8 @@ export function introView<T>(): T {
           "li",
           {
             style: {
-              backgroundImage: "url('https://common-resources.gaia.cc/covers/thegods.jpg')",
+              backgroundImage:
+                "url('https://common-resources.gaia.cc/covers/thegods.jpg')",
             },
           },
           el(
@@ -84,6 +85,120 @@ export function introView<T>(): T {
             ),
           ),
         ),*/
+        el(
+          "li",
+          {
+            style: {
+              backgroundImage:
+                "url('https://common-resources.gaia.cc/covers/gaia-names.png')",
+            },
+          },
+          el(
+            ".content",
+            el("h3", "Gaia Name"),
+            el(
+              "p",
+              "Receive your unique ",
+              el(
+                "a",
+                "Gaia Name ",
+                html(
+                  '<svg width="0.625rem" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 9L9 1M9 1H2.5M9 1V7.22222" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+                ),
+                {
+                  href: "https://names.gaia.cc",
+                  target: "_blank",
+                },
+              ),
+              " that can be used across the entire Gaia ecosystem.",
+            ),
+          ),
+        ),
+        el(
+          "li",
+          {
+            style: {
+              backgroundImage:
+                "url('https://common-resources.gaia.cc/covers/gaia-personas.jpg')",
+            },
+          },
+          el(
+            ".content",
+            el("h3", "Boosted Earnings in Gaia Personas"),
+            el(
+              "p",
+              "Enjoy 200% trading revenue from your persona transactions in Gaia Personas. (Coming soon)",
+            ),
+          ),
+        ),
+        el(
+          "li",
+          {
+            style: {
+              backgroundImage:
+                "url('https://common-resources.gaia.cc/covers/holding-points.jpg')",
+            },
+          },
+          el(
+            ".content",
+            el("h3", "Holding Points"),
+            el(
+              "p",
+              "Earn 10,000 holding points per NFT, increasing your trading fee earnings and qualifying you for airdrop events.",
+            ),
+          ),
+        ),
+        el(
+          "li",
+          {
+            style: {
+              backgroundImage:
+                "url('https://common-resources.gaia.cc/covers/topictrade.jpg')",
+            },
+          },
+          el(
+            ".content",
+            el("h3", "Enhanced topic.trade Returns"),
+            el(
+              "p",
+              "Receive up to 200% boosted trading revenue distribution based on the total holding points of topic holders. (Coming soon)",
+            ),
+          ),
+        ),
+        el(
+          "li",
+          {
+            style: {
+              backgroundImage:
+                "url('https://common-resources.gaia.cc/covers/gaia-clans.jpg')",
+            },
+          },
+          el(
+            ".content",
+            el("h3", "Gaia Clans Bonus"),
+            el(
+              "p",
+              "Get up to 200% boosted trading revenue distribution based on your clan members' total holding points. (Coming soon)",
+            ),
+          ),
+        ),
+        el(
+          "li",
+          {
+            style: {
+              backgroundImage:
+                "url('https://common-resources.gaia.cc/covers/gaia-materials.jpg')",
+            },
+          },
+          el(
+            ".content",
+            el("h3", "Gaia Materials Airdrops"),
+            el(
+              "p",
+              "Receive airdrop event participation rights based on your accumulated holding points. (Coming soon)",
+            ),
+          ),
+        ),
       ),
     ),
   );

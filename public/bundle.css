@@ -2362,9 +2362,6 @@ li.chat-message-list-item > main {
     aspect-ratio: 1;
   }
 }
-.intro-view > section > ul > li.membership > .content > h3 {
-  text-shadow: 0px 0px 10px #000;
-}
 .intro-view > section > ul > li > video {
   position: absolute;
   top: 0;
@@ -2387,6 +2384,7 @@ li.chat-message-list-item > main {
 .intro-view > section > ul > li > .content > h3 {
   font-size: 13.5px;
   flex-grow: 1;
+  text-shadow: 0px 0px 10px #000;
 }
 .intro-view > section > ul > li > .content > p {
   line-height: 1.375;

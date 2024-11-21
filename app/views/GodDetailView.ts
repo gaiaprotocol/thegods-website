@@ -7,7 +7,7 @@ import {
   ErrorDialog,
 } from "@common-module/app-components";
 import { ObjectUtils } from "@common-module/ts";
-import { WalletSessionManager } from "@common-module/wallet";
+import { WalletLoginManager } from "@common-module/wallet-login";
 import { OpenInNewIcon } from "@gaiaprotocol/svg-icons";
 import { godDetailView } from "../../pages/godDetailView.js";
 import AppConfig from "../AppConfig.js";
@@ -61,7 +61,7 @@ export default class GodDetailView extends View<Data> {
 
       if (
         await GaiaProtocolGodsContract.ownerOf(BigInt(this.tokenId)) !==
-          WalletSessionManager.getConnectedAddress()
+          WalletLoginManager.getLoggedInAddress()
       ) {
         this.container.append(
           this.nftDisplay = new GodDisplay(attributes),
