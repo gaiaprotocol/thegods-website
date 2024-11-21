@@ -2389,11 +2389,11 @@ li.chat-message-list-item > main {
   padding: 18px;
   display: flex;
   flex-direction: column;
+  text-shadow: 0px 0px 10px #000;
 }
 .intro-view > section > ul > li > .content > h3 {
   font-size: 13.5px;
   flex-grow: 1;
-  text-shadow: 0px 0px 10px #000;
 }
 .intro-view > section > ul > li > .content > p {
   line-height: 1.375;
