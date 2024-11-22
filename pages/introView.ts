@@ -175,10 +175,10 @@ export function introView<T>(): T {
           },
           el(
             ".content",
-            el("h3", "Gaia Clans Bonus"),
+            el("h3", "Clan Operational Funding"),
             el(
               "p",
-              "Get up to 200% boosted trading revenue distribution based on your clan members' total holding points. (Coming soon)",
+              "Get up to 200% boosted trading fee allocation to your clan's operational funds based on clan members' total holding points. (Coming soon)",
             ),
           ),
         ),
