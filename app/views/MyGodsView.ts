@@ -1,10 +1,9 @@
 import { DomNode, el, QueriedDomNode, Router, View } from "@common-module/app";
 import { html } from "@common-module/universal-page";
 import { WalletLoginManager } from "@common-module/wallet-login";
-import { OpenSeaNFTData } from "gaiaprotocol";
+import { NFTList, OpenSeaNFTData } from "gaiaprotocol";
 import { myGodsView } from "../../pages/myGodsView.js";
 import AppConfig from "../AppConfig.js";
-import GodList from "../components/GodList.js";
 import Layout from "./Layout.js";
 
 let cachedData: { nfts: OpenSeaNFTData[]; balance: number } | undefined;
@@ -64,7 +63,13 @@ export default class MyGodsView extends View {
           },
         ),
       );
-      this.container.append(new GodList(data));
+
+      this.container.append(
+        new NFTList({
+          data,
+          onClick: (nft) => Router.go(`/god/${nft.identifier}`, nft),
+        }),
+      );
 
       cachedData = data;
     }

@@ -61,8 +61,10 @@ export default class PartListItem<T> extends DomNode {
   }
 
   public select() {
-    this.addClass("selected");
-    this.checkIconContainer.append(new CheckIcon());
+    if (!this.hasClass("selected")) {
+      this.addClass("selected");
+      this.checkIconContainer.append(new CheckIcon());
+    }
   }
 
   public deselect() {
