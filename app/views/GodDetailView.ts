@@ -9,8 +9,8 @@ import {
 import { ObjectUtils } from "@common-module/ts";
 import { WalletLoginManager } from "@common-module/wallet-login";
 import { OpenInNewIcon } from "@gaiaprotocol/svg-icons";
+import { GodMode } from "gaiaprotocol";
 import { godDetailView } from "../../pages/godDetailView.js";
-import AppConfig from "../AppConfig.js";
 import GodAttributeEditor from "../components/god-attribute-editor/GodAttributeEditor.js";
 import GodImageConstructor from "../components/god-attribute-editor/GodImageConstructor.js";
 import GodDisplay from "../components/GodDisplay.js";
@@ -144,7 +144,7 @@ export default class GodDetailView extends View<Data> {
     if (this.nftAttributeForm) {
       const metadata = this.nftAttributeForm.metadata;
 
-      const result = await AppConfig.supabaseConnector.callEdgeFunction<
+      const result = await GodMode.supabaseConnector.callEdgeFunction<
         { duplicatedTokenId?: number }
       >(
         "check-god-metadata-duplicated",
@@ -175,7 +175,7 @@ export default class GodDetailView extends View<Data> {
       formData.append("tokenId", this.tokenId.toString());
       formData.append("metadata", JSON.stringify(metadata));
 
-      await AppConfig.supabaseConnector.callEdgeFunction(
+      await GodMode.supabaseConnector.callEdgeFunction(
         "set-god-metadata",
         formData,
       );

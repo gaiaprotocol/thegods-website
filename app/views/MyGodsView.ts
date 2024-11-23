@@ -1,11 +1,9 @@
 import { DomNode, el, QueriedDomNode, Router, View } from "@common-module/app";
 import { html } from "@common-module/universal-page";
 import { WalletLoginManager } from "@common-module/wallet-login";
-import { NFTList, OpenSeaNFTData } from "gaiaprotocol";
+import { GodMode, NFTList, OpenSeaNFTData } from "gaiaprotocol";
 import { myGodsView } from "../../pages/myGodsView.js";
-import AppConfig from "../AppConfig.js";
 import Layout from "./Layout.js";
-
 let cachedData: { nfts: OpenSeaNFTData[]; balance: number } | undefined;
 
 export default class MyGodsView extends View {
@@ -35,7 +33,7 @@ export default class MyGodsView extends View {
 
     const data: { nfts: OpenSeaNFTData[]; balance: number } = cachedData
       ? cachedData
-      : await AppConfig.supabaseConnector.callEdgeFunction("get-user-gods", {});
+      : await GodMode.supabaseConnector.callEdgeFunction("get-user-gods", {});
 
     skeleton.remove();
 
