@@ -12,7 +12,7 @@ class Layout {
   }
 
   public init() {
-    new QueriedDomNode(".layout header .buttons").append(
+    new QueriedDomNode(".layout header .button-container").append(
       new LoggedInUserAvatarButton(WalletLoginManager, true),
     );
 

@@ -5,7 +5,7 @@ export function header() {
   return el(
     "header",
     getGaiaProtocolLogo(),
-    el(".buttons"),
+    el(".button-container"),
   );
 }
 

@@ -76,7 +76,7 @@ export default class GodDetailView extends View<Data> {
               this.nftAttributeForm = new GodAttributeEditor(attributes),
             ),
             el(
-              ".buttons",
+              ".button-container",
               this.resetButton = new Button({
                 title: "Reset",
                 disabled: true,

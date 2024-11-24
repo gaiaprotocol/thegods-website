@@ -12,7 +12,7 @@ export function introView<T>(): T {
         "A membership NFT collection of Gaia Protocol consisting of 3,333 NFTs",
       ),
       el(
-        ".buttons",
+        ".button-container",
         el(
           "a.button.contained",
           "View on OpenSea",

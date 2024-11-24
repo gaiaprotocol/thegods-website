@@ -19,7 +19,7 @@ export default class IntroView extends View {
         { onclick: () => nftViewer.touch() },
       ),
       el(
-        ".buttons",
+        ".button-container",
         new Button({
           type: ButtonType.Contained,
           icon: new RefreshIcon(),
