@@ -20,6 +20,14 @@ export default class MyGodsView extends View {
     } else {
       Router.goWithoutHistory("/");
     }
+
+    this.container.subscribe(WalletLoginManager, "loginStatusChanged", () => {
+      if (WalletLoginManager.isLoggedIn()) {
+        this.loadGods();
+      } else {
+        Router.goWithoutHistory("/");
+      }
+    });
   }
 
   private async loadGods() {
