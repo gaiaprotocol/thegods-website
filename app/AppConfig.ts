@@ -43,7 +43,7 @@ class AppConfig {
 
     SocialCompConfig.goLoggedInUserProfile = () => Router.go("/my-gods");
 
-    SocialCompConfig.getLoggedInUserMenu = async (menu, user) =>
+    SocialCompConfig.getLoggedInUserMenu = async (menu, user) => [
       new DropdownMenuGroup(
         new DropdownMenuItem({
           icon: new NFTIcon(),
@@ -53,7 +53,8 @@ class AppConfig {
             menu.remove();
           },
         }),
-      );
+      ),
+    ];
   }
 }
 
