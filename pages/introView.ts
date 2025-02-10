@@ -144,7 +144,7 @@ export function introView<T>(): T {
             el("h3", "Holding Points"),
             el(
               "p",
-              "Earn 10,000 holding points per NFT, increasing your trading fee earnings and qualifying you for airdrop events.",
+              "Earn 10,000 holding points per NFT, increasing your trading fee earnings.",
             ),
           ),
         ),
@@ -179,23 +179,6 @@ export function introView<T>(): T {
             el(
               "p",
               "Get up to 200% boosted trading fee allocation to your clan's operational funds based on clan members' total holding points. (Coming soon)",
-            ),
-          ),
-        ),
-        el(
-          "li",
-          {
-            style: {
-              backgroundImage:
-                "url('https://common-resources.gaia.cc/covers/gaia-materials.jpg')",
-            },
-          },
-          el(
-            ".content",
-            el("h3", "Gaia Materials Airdrops"),
-            el(
-              "p",
-              "Receive airdrop event participation rights based on your accumulated holding points. (Coming soon)",
             ),
           ),
         ),
