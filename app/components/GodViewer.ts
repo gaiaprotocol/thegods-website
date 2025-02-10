@@ -30,9 +30,11 @@ export default class GodViewer extends DomNode<HTMLDivElement, {
     super(".god-viewer");
 
     if (fullscreen) {
-      this.screen = new LetterboxedScreen(1024, 1024);
+      this.screen = new LetterboxedScreen({ width: 1024, height: 1024 });
     } else {
-      this.screen = new GameScreen(1024, 1024).appendTo(this);
+      this.screen = new GameScreen({ width: 1024, height: 1024 }).appendTo(
+        this,
+      );
       this.on("visible", () => this.updateLayout());
       this.onWindow("resize", () => this.updateLayout());
     }

@@ -26,7 +26,7 @@ export default class GodDisplay extends DomNode {
   constructor(attributes: OpenSeaMetadataAttribute[]) {
     super(".god-display");
 
-    this.screen = new GameScreen(1024, 1024).appendTo(this);
+    this.screen = new GameScreen({ width: 1024, height: 1024 }).appendTo(this);
     this.on("visible", () => this.updateLayout());
     this.onWindow("resize", () => this.updateLayout());
 
