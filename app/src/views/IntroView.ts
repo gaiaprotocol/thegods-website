@@ -2,7 +2,7 @@ import { el, QueriedDomNode, View } from "@common-module/app";
 import { Button, ButtonType } from "@common-module/app-components";
 import { IntegerUtils } from "@common-module/ts";
 import { OpenInNewIcon, RefreshIcon } from "@gaiaprotocol/svg-icons";
-import { introView } from "../../pages/introView.js";
+import { introView } from "../../../pages/introView.js";
 import GodViewer from "../components/GodViewer.js";
 import Layout from "./Layout.js";
 

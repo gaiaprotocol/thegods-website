@@ -1,10 +1,25 @@
 import path from "path";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import webpack from "webpack";
+import TerserPlugin from "terser-webpack-plugin";
 
 const config: webpack.Configuration = {
+  mode: "production",
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+        },
+        extractComments: false,
+      }),
+    ],
+  },
   entry: {
-    "bundle": "./src/testnet.ts",
+    "bundle": "./src/prod.ts",
     __less: "./style/main.less",
   },
   module: {
@@ -39,7 +54,7 @@ const config: webpack.Configuration = {
     },
   },
   output: {
-    filename: "[name]-testnet.js",
+    filename: "[name].js",
     path: path.resolve("../public"),
   },
   plugins: [
@@ -47,7 +62,7 @@ const config: webpack.Configuration = {
       Buffer: ["buffer", "Buffer"],
     }),
     new MiniCssExtractPlugin({
-      filename: "bundle-testnet.css",
+      filename: "bundle.css",
     }),
   ],
 };

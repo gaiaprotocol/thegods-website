@@ -2,7 +2,7 @@ import { DomNode, el, QueriedDomNode, Router, View } from "@common-module/app";
 import { html } from "@common-module/universal-page";
 import { WalletLoginManager } from "@common-module/wallet-login";
 import { GodMode, NFTList, OpenSeaNFTData } from "gaiaprotocol";
-import { myGodsView } from "../../pages/myGodsView.js";
+import { myGodsView } from "../../../pages/myGodsView.js";
 import Layout from "./Layout.js";
 let cachedData: { nfts: OpenSeaNFTData[]; balance: number } | undefined;
 

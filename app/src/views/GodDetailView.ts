@@ -10,7 +10,7 @@ import { ObjectUtils } from "@common-module/ts";
 import { WalletLoginManager } from "@common-module/wallet-login";
 import { OpenInNewIcon } from "@gaiaprotocol/svg-icons";
 import { GodMode } from "gaiaprotocol";
-import { godDetailView } from "../../pages/godDetailView.js";
+import { godDetailView } from "../../../pages/godDetailView.js";
 import GodAttributeEditor from "../components/god-attribute-editor/GodAttributeEditor.js";
 import GodImageConstructor from "../components/god-attribute-editor/GodImageConstructor.js";
 import GodDisplay from "../components/GodDisplay.js";

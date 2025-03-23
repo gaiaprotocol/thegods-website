@@ -82,15 +82,13 @@
     "public",
     "server",
     "webpack.config.dev.ts",
-    "webpack.config.testnet.ts",
-    "webpack.config.mainnet.ts"
+    "webpack.config.prod.ts"
   ],
   "ts-node": {
     "transpileOnly": true,
     "moduleTypes": {
       "webpack.config.dev.ts": "cjs",
-      "webpack.config.testnet.ts": "cjs",
-      "webpack.config.mainnet.ts": "cjs"
+      "webpack.config.prod.ts": "cjs"
     }
   }
 }
