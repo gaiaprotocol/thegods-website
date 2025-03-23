@@ -1,0 +1,87 @@
+.god-detail-view {
+  margin-top: 86px;
+  max-width : 1128px;
+
+  @container (width <=@phone-width) {
+    margin-top: 54px;
+  }
+
+  >header {
+    margin-bottom : 42px;
+    display       : flex;
+    flex-direction: column;
+    gap           : 12px;
+    align-items   : flex-start;
+
+    >h1 {
+      font-size: 36px;
+
+      @container (width <=@phone-width) {
+        font-size: 27px;
+      }
+    }
+  }
+
+  >.god-display {
+    width        : 50%;
+    flex-shrink  : 0;
+    border-radius: 8px;
+    overflow     : hidden;
+
+    @container (width <=@phone-width) {
+      width: 100%;
+    }
+  }
+
+  >.form-container {
+    >main {
+      display         : flex;
+      background-color: var(--modal-bg-color);
+      border-radius   : 8px;
+      overflow        : hidden;
+
+      @container (width <=@phone-width) {
+        flex-direction: column;
+      }
+
+      >.god-display {
+        width      : 50%;
+        flex-shrink: 0;
+
+        @container (width <=@phone-width) {
+          width: 100%;
+        }
+      }
+
+      >.god-attribute-editor {
+        width       : 50%;
+        flex-shrink : 0;
+        padding     : 68px;
+        aspect-ratio: 1;
+        overflow-y  : auto;
+
+        @container (width <=@phone-width) {
+          width       : 100%;
+          padding     : 22px 34px;
+          aspect-ratio: unset;
+          overflow-y  : visible;
+        }
+      }
+    }
+
+    >.button-container {
+      padding: 24px 0;
+
+      display        : flex;
+      align-items    : center;
+      justify-content: flex-end;
+      gap            : 16px;
+
+      @container (width <=@phone-width) {
+        >button {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+}

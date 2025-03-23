@@ -1,0 +1,168 @@
+.intro-view {
+  margin-top: 86px;
+
+  >header {
+    display       : flex;
+    flex-direction: column;
+    text-align    : center;
+
+    >p.caption {
+      font-size    : 15px;
+      margin-bottom: 12px;
+    }
+
+    >h1 {
+      font-size: 72px;
+
+      @container (width <=@phone-width) {
+        font-size: 48px;
+      }
+    }
+
+    >p.description {
+      margin-top: 22px;
+    }
+
+    >.button-container {
+      display        : flex;
+      justify-content: center;
+      margin-top     : 34px;
+    }
+  }
+
+  >.god-preview {
+    max-width     : 725px;
+    margin        : 80px auto 0;
+    display       : flex;
+    flex-direction: column;
+    gap           : 54px;
+
+    >.god-viewer-container {
+      position: relative;
+
+      >.god-viewer {
+        width: 100%;
+
+        >.game-screen>canvas,
+        >.loading-spinner {
+          border-radius: 8px;
+        }
+      }
+
+      >.data {
+        position: absolute;
+        top     : 0;
+        left    : 0;
+        width   : 100%;
+        height  : 100%;
+        padding : 18px;
+
+        display       : flex;
+        flex-direction: column;
+
+        cursor     : pointer;
+        user-select: none;
+
+        >h2 {
+          font-size: 13.5px;
+          flex-grow: 1;
+        }
+
+        >p {
+          line-height: 1.375;
+        }
+      }
+    }
+
+    >.button-container {
+      display        : flex;
+      align-items    : center;
+      justify-content: center;
+      gap            : 22px;
+
+      @container (width <=@phone-width) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  >section {
+    margin-top: 108px;
+
+    >h2 {
+      max-width    : 1128px;
+      margin       : 0 auto;
+      padding      : 0 20px;
+      font-size    : 36px;
+      margin-bottom: 42px;
+      text-align   : center;
+
+      @container (width <=@phone-width) {
+        font-size    : 27px;
+        margin-bottom: 27px;
+      }
+    }
+
+    >ul {
+      display              : grid;
+      gap                  : 13.5px;
+      grid-template-columns: repeat(3, 1fr);
+
+      @container (width <=800px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @container (width <=@phone-width) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      >li {
+        display      : block;
+        position     : relative;
+        border-radius: 4.5px;
+        overflow     : hidden;
+        aspect-ratio : 3 / 4;
+
+        background-size    : cover;
+        background-position: center;
+
+        @container (width <=@phone-width) {
+          aspect-ratio: 1;
+        }
+
+        >video {
+          position  : absolute;
+          top       : 0;
+          left      : 0;
+          width     : 100%;
+          height    : 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease-in-out;
+        }
+
+        >.content {
+          position: absolute;
+          top     : 0;
+          left    : 0;
+          width   : 100%;
+          height  : 100%;
+          padding : 18px;
+
+          display       : flex;
+          flex-direction: column;
+
+          text-shadow: 0px 0px 10px #000;
+
+          >h3 {
+            font-size: 13.5px;
+            flex-grow: 1;
+          }
+
+          >p {
+            line-height: 1.375;
+          }
+        }
+      }
+    }
+  }
+}

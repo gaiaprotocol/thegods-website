@@ -1,4 +1,4 @@
-# thegods-interface
+# thegods-website
 
 ```
 cd utils

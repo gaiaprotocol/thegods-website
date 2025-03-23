@@ -1,0 +1,58 @@
+.layout {
+  padding-top: 72px;
+
+  @container (width <=@phone-width) {
+    padding-bottom: 56px;
+  }
+
+  >header {
+    position: fixed;
+    top     : 0;
+    left    : 0;
+    right   : 0;
+    z-index : 1000;
+
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter : blur(24px);
+
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    padding        : 16px 24px;
+
+    >.persona-logo {
+      display    : flex;
+      align-items: center;
+      height     : 40px;
+    }
+  }
+
+  >main {
+    max-width: 1128px;
+    padding  : 0 20px;
+    margin   : 0 auto;
+  }
+
+  >footer {
+    display  : flex;
+    max-width: 1128px;
+    margin   : 0 auto;
+    padding  : 108px 20px 34px;
+
+    >.credit {
+      flex-grow: 1;
+      color    : #b4b4b4;
+      font-size: 14px;
+
+      >a {
+        text-decoration      : underline;
+        text-decoration-color: var(--link-underline-color);
+        transition           : text-decoration-color 0.25s ease;
+
+        &:hover {
+          text-decoration-color: currentColor;
+        }
+      }
+    }
+  }
+}
