@@ -32,11 +32,11 @@ export default class MyGodsView extends View {
 
   private async loadGods() {
     const skeleton = el(
-      ".god-list.skeleton",
-      el(".god-list-item.skeleton-item"),
-      el(".god-list-item.skeleton-item"),
-      el(".god-list-item.skeleton-item"),
-      el(".god-list-item.skeleton-item"),
+      ".nft-list.skeleton",
+      el(".nft-list-item.skeleton-item"),
+      el(".nft-list-item.skeleton-item"),
+      el(".nft-list-item.skeleton-item"),
+      el(".nft-list-item.skeleton-item"),
     ).appendTo(this.container);
 
     const data: { nfts: OpenSeaNFTData[]; balance: number } = cachedData
