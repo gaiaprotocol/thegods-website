@@ -11,9 +11,16 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import { pages } from "./pages/pages.js";
+
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
+
+		const page = pages(url.pathname);
+		if (page) {
+			return new Response(page, { headers: { "Content-Type": "text/html" } });
+		}
 
 		if (url.pathname.startsWith("/api/")) {
 			return new Response(JSON.stringify({ name: "Cloudflare" }), {
