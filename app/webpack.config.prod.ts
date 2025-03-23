@@ -20,6 +20,7 @@ const config: webpack.Configuration = {
   },
   entry: {
     "bundle": "./src/prod.ts",
+    "god-viewer": "./src/god-viewer-prod.ts",
     __less: "./style/main.less",
   },
   module: {

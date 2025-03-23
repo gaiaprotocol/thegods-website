@@ -5,6 +5,7 @@ import webpack from "webpack";
 const config: webpack.Configuration = {
   entry: {
     "bundle": "./src/dev.ts",
+    "god-viewer": "./src/god-viewer-dev.ts",
     __less: "./style/main.less",
   },
   module: {
