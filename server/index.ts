@@ -17,7 +17,8 @@ export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
 
-		const page = pages(url.pathname);
+		console.log(env.ENVIRONMENT);
+		const page = pages(url.pathname, env.ENVIRONMENT === "development");
 		if (page) {
 			return new Response(page, { headers: { "Content-Type": "text/html" } });
 		}

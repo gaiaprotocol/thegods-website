@@ -97,7 +97,7 @@ export default class GodViewer extends DomNode<HTMLDivElement, {
       this.spineObject = new Spine(0, 0, {
         json: `${path}.json`,
         atlas: `${path}.atlas`,
-        png: metadata.type === "Water"
+        texture: metadata.type === "Water"
           ? {
             [`water-${genderLowerCase}.png`]: `${path}.png`,
             [`water-${genderLowerCase}_2.png`]: `${path}-2.png`,
