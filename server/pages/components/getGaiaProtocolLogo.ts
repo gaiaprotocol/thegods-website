@@ -1,4 +1,4 @@
-import el from "../el.js";
+import { el } from "@common-module/ssr";
 
 export default function getGaiaProtocolLogo() {
   const imageHeight = 40;

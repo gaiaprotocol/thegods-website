@@ -1,5 +1,5 @@
+import { el } from "@common-module/ssr";
 import getGaiaProtocolLogo from "./components/getGaiaProtocolLogo.js";
-import el from "./el.js";
 
 export function header() {
   return el(

@@ -1,14 +1,9 @@
-import { el as UniversalEl, html } from "@common-module/universal-page";
+import { createPage } from "@common-module/ssr";
 import { godDetailView } from "../../pages/godDetailView.js";
 import { godViewerView } from "../../pages/godViewerView.js";
 import { introView } from "../../pages/introView.js";
 import { myGodsView } from "../../pages/myGodsView.js";
-import createPage from "./createPage.js";
-import el from "./el.js";
 import { layout } from "./layout.js";
-
-UniversalEl.impl = el;
-html.impl = (htmlContent) => htmlContent;
 
 const GTAG_ID = "G-ZT30R32YZV";
 
