@@ -17,17 +17,16 @@ export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
 
-		console.log(env.ENVIRONMENT);
 		const page = pages(url.pathname, env.ENVIRONMENT === "development");
 		if (page) {
 			return new Response(page, { headers: { "Content-Type": "text/html" } });
 		}
 
-		if (url.pathname.startsWith("/api/")) {
+		/*if (url.pathname.startsWith("/api/")) {
 			return new Response(JSON.stringify({ name: "Cloudflare" }), {
 				headers: { "Content-Type": "application/json" },
 			});
-		}
+		}*/
 
 		return env.ASSETS.fetch(request);
 	},
