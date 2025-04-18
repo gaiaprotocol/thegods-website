@@ -1,11 +1,11 @@
-import { Router } from "@common-module/app";
+import { Router } from "@commonmodule/app";
 import {
   DropdownMenuGroup,
   DropdownMenuItem,
-} from "@common-module/app-components";
-import { SocialCompConfig } from "@common-module/social-components";
-import { WalletLoginConfig } from "@common-module/wallet-login";
-import { AddressUtils } from "@common-module/wallet-utils";
+} from "@commonmodule/app-components";
+import { SocialCompConfig } from "@commonmodule/social-components";
+import { WalletLoginConfig } from "@commonmodule/wallet-login";
+import { AddressUtils } from "@commonmodule/wallet-utils";
 import { NFTIcon } from "@gaiaprotocol/svg-icons";
 import { GaiaUIPreset } from "@gaiaprotocol/ui-preset";
 import { mainnet } from "@wagmi/core/chains";

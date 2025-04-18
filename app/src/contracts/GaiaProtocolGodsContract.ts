@@ -1,4 +1,4 @@
-import { WalletLoginManager } from "@common-module/wallet-login";
+import { WalletLoginManager } from "@commonmodule/wallet-login";
 import { mainnet } from "@wagmi/core/chains";
 import GaiaProtocolGodsArtifact from "./artifacts/GaiaProtocolGods.json" assert {
   type: "json",

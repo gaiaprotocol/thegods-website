@@ -1,6 +1,6 @@
-import { DomNode, QueriedDomNode, Router } from "@common-module/app";
-import { LoggedInUserAvatarButton } from "@common-module/social-components";
-import { WalletLoginManager } from "@common-module/wallet-login";
+import { DomNode, QueriedDomNode, Router } from "@commonmodule/app";
+import { LoggedInUserAvatarButton } from "@commonmodule/social-components";
+import { WalletLoginManager } from "@commonmodule/wallet-login";
 
 class Layout {
   private contentContainer = new QueriedDomNode(".layout main");

@@ -1,5 +1,5 @@
-import { DomNode } from "@common-module/app";
-import { MaterialLoadingSpinner } from "@common-module/material-loading-spinner";
+import { DomNode } from "@commonmodule/app";
+import { MaterialLoadingSpinner } from "@commonmodule/material-loading-spinner";
 import { GameScreen, LetterboxedScreen } from "@gaiaengine/2d";
 import { Spine } from "@gaiaengine/2d-spine";
 import { PartSelector } from "@gaiaprotocol/thegods";

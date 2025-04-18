@@ -1,4 +1,4 @@
-import { Router, SPAInitializer } from "@common-module/app";
+import { Router, SPAInitializer } from "@commonmodule/app";
 import AppConfig, { IAppConfig } from "./AppConfig.js";
 import GodDetailView from "./views/GodDetailView.js";
 import IntroView from "./views/IntroView.js";

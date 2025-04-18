@@ -1,6 +1,6 @@
-import { DomNode } from "@common-module/app";
-import { Accordion, AccordionItem } from "@common-module/app-components";
-import { Debouncer } from "@common-module/ts";
+import { DomNode } from "@commonmodule/app";
+import { Accordion, AccordionItem } from "@commonmodule/app-components";
+import { Debouncer } from "@commonmodule/ts";
 import {
   ElementType,
   GenderType,

@@ -1,4 +1,4 @@
-import { el, html } from "@common-module/universal-page";
+import { el, html } from "@commonmodule/universal-page";
 
 export function godDetailView<T>(tokenId: number): T {
   return el(

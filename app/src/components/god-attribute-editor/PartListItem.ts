@@ -1,4 +1,4 @@
-import { DomNode, el } from "@common-module/app";
+import { DomNode, el } from "@commonmodule/app";
 import { GameScreen, Sprite } from "@gaiaengine/dom";
 import { CheckIcon } from "@gaiaprotocol/svg-icons";
 import { GodMetadata, PartSelector } from "@gaiaprotocol/thegods";

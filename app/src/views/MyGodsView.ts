@@ -1,6 +1,6 @@
-import { DomNode, el, QueriedDomNode, Router, View } from "@common-module/app";
-import { html } from "@common-module/universal-page";
-import { WalletLoginManager } from "@common-module/wallet-login";
+import { DomNode, el, QueriedDomNode, Router, View } from "@commonmodule/app";
+import { html } from "@commonmodule/universal-page";
+import { WalletLoginManager } from "@commonmodule/wallet-login";
 import { GodMode, NFTList, OpenSeaNFTData } from "gaiaprotocol";
 import { myGodsView } from "../../../pages/myGodsView.js";
 import Layout from "./Layout.js";

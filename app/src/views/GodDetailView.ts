@@ -1,13 +1,13 @@
-import { el, View } from "@common-module/app";
+import { el, View } from "@commonmodule/app";
 import {
   AppCompConfig,
   Button,
   ButtonType,
   ConfirmDialog,
   ErrorDialog,
-} from "@common-module/app-components";
-import { ObjectUtils } from "@common-module/ts";
-import { WalletLoginManager } from "@common-module/wallet-login";
+} from "@commonmodule/app-components";
+import { ObjectUtils } from "@commonmodule/ts";
+import { WalletLoginManager } from "@commonmodule/wallet-login";
 import { OpenInNewIcon } from "@gaiaprotocol/svg-icons";
 import { GodMode } from "gaiaprotocol";
 import { godDetailView } from "../../../pages/godDetailView.js";

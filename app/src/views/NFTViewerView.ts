@@ -1,4 +1,4 @@
-import { QueriedDomNode, View } from "@common-module/app";
+import { QueriedDomNode, View } from "@commonmodule/app";
 import GodViewer from "../components/GodViewer.js";
 
 export default class NFTViewerView extends View {

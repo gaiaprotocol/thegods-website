@@ -1,4 +1,4 @@
-import { createPage } from "@common-module/ssr";
+import { createPage } from "@commonmodule/ssr";
 import { godDetailView } from "../../pages/godDetailView.js";
 import { godViewerView } from "../../pages/godViewerView.js";
 import { introView } from "../../pages/introView.js";

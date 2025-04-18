@@ -7,7 +7,7 @@
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
-		"@common-module/ssr": "^0.0.1"
+		"@commonmodule/ssr": "^0.0.1"
 	},
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.7.5",
