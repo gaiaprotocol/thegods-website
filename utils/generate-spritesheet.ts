@@ -92,7 +92,7 @@ const keyToPart: {
   };
 } = {};
 
-const keyToSpritesheet: {
+const keyToSprite: {
   [type: string]: {
     [filename: string]: {
       frame: string;
@@ -201,11 +201,11 @@ async function processImages() {
 
       const type = key.split("/")[0];
 
-      if (!keyToSpritesheet[type]) {
-        keyToSpritesheet[type] = {};
+      if (!keyToSprite[type]) {
+        keyToSprite[type] = {};
       }
 
-      keyToSpritesheet[type][key.split("/").slice(1).join("/")] = {
+      keyToSprite[type][key.split("/").slice(1).join("/")] = {
         frame: frameId,
         zIndex: part.zIndex,
       };
@@ -217,8 +217,8 @@ async function processImages() {
     );
 
     fs.writeFileSync(
-      path.join(outputPath, "key-to-spritesheet.json"),
-      JSON.stringify(keyToSpritesheet, null, 2),
+      path.join(outputPath, "key-to-sprite.json"),
+      JSON.stringify(keyToSprite, null, 2),
     );
 
     console.log("All files have been processed and saved.");

@@ -2,7 +2,7 @@ import { DomNode, el } from "@commonmodule/app";
 import { GameScreen, Sprite } from "@gaiaengine/dom";
 import { CheckIcon } from "@gaiaprotocol/svg-icons";
 import { GodMetadata, PartSelector } from "@gaiaprotocol/thegods";
-import keyToSpritesheet from "./spritesheet/key-to-spritesheet.json" with {
+import keyToSprite from "./spritesheet/key-to-sprite.json" with {
   type: "json",
 };
 import spritesheet from "./spritesheet/spritesheet.json" with {
@@ -29,7 +29,7 @@ export default class PartListItem<T> extends DomNode {
       if (images) {
         for (const image of images) {
           const data =
-            (keyToSpritesheet as any)[metadata.type.toLocaleLowerCase()][
+            (keyToSprite as any)[metadata.type.toLocaleLowerCase()][
               image.path
             ];
 
