@@ -28,10 +28,9 @@ export default class PartListItem<T> extends DomNode {
       const images = part.images;
       if (images) {
         for (const image of images) {
-          const data =
-            (keyToSprite as any)[metadata.type.toLocaleLowerCase()][
-              image.path
-            ];
+          const data = (keyToSprite as any)[metadata.type.toLocaleLowerCase()][
+            image.path
+          ];
 
           const sprite = new Sprite(
             0,
@@ -41,7 +40,7 @@ export default class PartListItem<T> extends DomNode {
             data.frame,
           ).appendTo(this.gameScreen.root);
 
-          sprite.zIndex = data.zIndex;
+          sprite.drawingOrder = data.drawingOrder;
         }
       }
     }

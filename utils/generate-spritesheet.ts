@@ -2,22 +2,22 @@ import fs from "fs";
 import path from "path";
 import sharp, { Metadata } from "sharp";
 import fireManParts from "./parts-jsons/fire-man-parts.json" with {
-  type: "json"
+  type: "json",
 };
 import fireWomanParts from "./parts-jsons/fire-woman-parts.json" with {
-  type: "json"
+  type: "json",
 };
 import stoneManParts from "./parts-jsons/stone-man-parts.json" with {
-  type: "json"
+  type: "json",
 };
 import stoneWomanParts from "./parts-jsons/stone-woman-parts.json" with {
-  type: "json"
+  type: "json",
 };
 import waterManParts from "./parts-jsons/water-man-parts.json" with {
-  type: "json"
+  type: "json",
 };
 import waterWomanParts from "./parts-jsons/water-woman-parts.json" with {
-  type: "json"
+  type: "json",
 };
 
 interface SpritesheetData {
@@ -88,7 +88,7 @@ const keyToPart: {
   [filename: string]: {
     row: number;
     col: number;
-    zIndex: number;
+    drawingOrder: number;
   };
 } = {};
 
@@ -96,7 +96,7 @@ const keyToSprite: {
   [type: string]: {
     [filename: string]: {
       frame: string;
-      zIndex: number;
+      drawingOrder: number;
     };
   };
 } = {};
@@ -128,7 +128,7 @@ async function createSpritesheetImage(
     keyToPart[fileId] = {
       row,
       col,
-      zIndex: orders[fileId],
+      drawingOrder: orders[fileId],
     };
     return {
       input: file,
@@ -207,7 +207,7 @@ async function processImages() {
 
       keyToSprite[type][key.split("/").slice(1).join("/")] = {
         frame: frameId,
-        zIndex: part.zIndex,
+        drawingOrder: part.drawingOrder,
       };
     }
 
